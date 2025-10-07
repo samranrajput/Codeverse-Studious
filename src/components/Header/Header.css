@@ -1,0 +1,47 @@
+header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.header-gradient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: #060121;
+}
+
+.header-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.header-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.header-overlay p {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.header-overlay button {
+  background: #00a384;
+  border: none;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
