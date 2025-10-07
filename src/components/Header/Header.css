@@ -5,7 +5,7 @@ header {
   overflow: hidden;
 }
 
-.header-gradient {
+header .header-gradient {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -15,11 +15,11 @@ header {
   background-color: #060121;
 }
 
-.header-overlay {
+header .header-overlay {
   position: relative;
   z-index: 10;
   width: 100%;
-  height: 100%;
+  height: 87%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,17 +28,17 @@ header {
   text-align: center;
 }
 
-.header-overlay h1 {
+header .header-overlay h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
 }
 
-.header-overlay p {
+header .header-overlay p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
-.header-overlay button {
+header .header-overlay button {
   background: #00a384;
   border: none;
   color: white;

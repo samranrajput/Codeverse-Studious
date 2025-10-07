@@ -15,12 +15,11 @@ nav {
 }
 
 nav figure {
-  width: 12%;
-  height: 12%;
+  width: 150px;
+  /* height: 100px; */
 }
 
 nav ul {
-  /* border: 2px solid red; */
   list-style: none;
   display: flex;
   width: 60%;
