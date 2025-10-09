@@ -1,26 +1,29 @@
 import React from "react";
-import "./Navbar.css";
-import logo from "../../assets/logo3.png";
+import GooeyNav from "../GooeyNav/GooeyNav";
+
+const items = [
+  { label: "Home", href: "#" },
+  { label: "Highlights", href: "#" },
+  { label: "About Us", href: "#" },
+  { label: "Resume", href: "#" },
+  { label: "Servisece", href: "#" },
+  { label: "Projects", href: "#" },
+  { label: "Clients Reviews", href: "#" },
+  { label: "Contact Us", href: "#" },
+];
 
 function Navbar() {
   return (
-    <nav>
-      <figure>
-        <img src={logo} alt="Codeverse Studious Logo"></img>
-      </figure>
-      <ul>
-        <li>Home</li>
-        <li>Heighlights</li>
-        <li>About Us</li>
-        <li>Servicese</li>
-        <li>Resume</li>
-        <li>Projects</li>
-        <li>Contact Us</li>
-      </ul>
-      <div>
-        <p>mode</p>
-      </div>
-    </nav>
+    <GooeyNav
+      items={items}
+      particleCount={10}
+      particleDistances={[80, 10]}
+      particleR={10}
+      initialActiveIndex={0}
+      animationTime={500}
+      timeVariance={100}
+      colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+    />
   );
 }
 
