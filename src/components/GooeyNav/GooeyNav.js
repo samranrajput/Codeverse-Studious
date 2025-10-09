@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import logo from "../../assets/logo3.png";
+import logo from "../../assets/logo.png";
 import "./GooeyNav.css";
 
 const GooeyNav = ({
@@ -154,7 +154,7 @@ const GooeyNav = ({
       <figure>
         <img src={logo} alt="Codeverse Studious Logo"></img>
       </figure>
-      <ul ref={navRef}>
+      <ul ref={navRef} className="normal-text">
         {items.map((item, index) => (
           <li key={index} className={activeIndex === index ? "active" : ""}>
             <a

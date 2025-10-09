@@ -2,8 +2,10 @@
 header {
   width: 100%;
   height: 100vh;
+  background: #060121;
   position: relative;
   overflow: hidden;
+  border: 15px double #00a384;
 }
 /* Header Gradient Styling */
 header .header-gradient {
@@ -22,7 +24,7 @@ header::before {
   width: 100%;
   height: 100%;
   background: rgba(6, 1, 33, 0.4);
-  z-index: 10;
+  z-index: 8;
 }
 
 /* Header Design Styling */
@@ -62,10 +64,9 @@ header .svg-animation {
   /* transform: translate(-50%, -50%); */
   /* width: 100%; */
   /* height: 20%; */
-  /* border: 2px solid red; */
   top: 0;
   right: 0;
-  width: 50%;
+  width: 85%;
   height: 100%;
   z-index: 10;
 }
@@ -74,7 +75,7 @@ header .svg-animation svg {
   position: relative;
   float: right;
   width: 100%;
-  /* border: 2px solid red; */
+  padding-top: 40px;
   height: 100%;
 }
 
@@ -103,15 +104,140 @@ header .svg-animation svg .st2 {
 
 header .svg-animation .svg-img-container {
   position: absolute;
-  top: 54%;
-  left: 58%;
-  width: 42%;
+  top: 53%;
+  left: 50%;
+  width: 49%;
   height: auto;
   transform: translate(-50%, -50%);
 }
 
 header .svg-animation .svg-img-container img {
   border-radius: 250px;
+}
+
+/* Skill Container Styling */
+header .skill-container {
+  position: absolute;
+  top: 50%;
+  left: 68%;
+  transform: translate(-50%, -50%);
+  z-index: 9;
+  width: 40vw;
+  height: 40vw;
+  max-width: 400px;
+  max-height: 400px;
+  min-width: 250px;
+  min-height: 250px;
+  /* border: 5px solid white; */
+  border-radius: 1000px;
+}
+
+header .skill-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: 5px solid white;
+  border-radius: 50%;
+  mask: conic-gradient(
+    transparent 0deg 15deg,
+    white 15deg 80deg,
+    transparent 80deg 105deg,
+    white 105deg 170deg,
+    transparent 170deg 190deg,
+    white 190deg 260deg,
+    transparent 260deg 285deg,
+    white 285deg 350deg,
+    transparent 350deg 360deg
+  );
+  -webkit-mask: conic-gradient(
+    transparent 0deg 15deg,
+    white 15deg 80deg,
+    transparent 80deg 105deg,
+    white 105deg 170deg,
+    transparent 170deg 190deg,
+    white 190deg 260deg,
+    transparent 260deg 285deg,
+    white 285deg 350deg,
+    transparent 350deg 360deg
+  );
+  animation: ring 20s 5s infinite;
+}
+
+@keyframes ring {
+  25% {
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    transform: rotate(-180deg);
+  }
+
+  75% {
+    transform: rotate(-270deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+header .skill-container .ring {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  animation: ring-text 20s 5s infinite;
+}
+
+@keyframes ring-text {
+  25% {
+    transform: rotate(-90deg);
+  }
+
+  50% {
+    transform: rotate(-180deg);
+  }
+
+  75% {
+    transform: rotate(-270deg);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+header .skill-container .ring .skill {
+  position: absolute;
+  padding: 0.5em;
+  text-align: center;
+  width: max-content;
+  background: transparent;
+  color: white;
+}
+
+header .skill-container .ring .skill1 {
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+}
+
+header .skill-container .ring .skill2 {
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+header .skill-container .ring .skill3 {
+  top: 50%;
+  left: 100%;
+  transform: translate(-50%, -50%) rotate(180deg);
+}
+
+header .skill-container .ring .skill4 {
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(270deg);
 }
 
 /* Header Content Styling */
@@ -123,16 +249,30 @@ header .header-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  /* align-items: center; */
   color: white;
 }
 
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
+
 header .header-content h1 {
-  font-size: 3rem;
+  font-family: "Caveat", cursive;
   margin-bottom: 1rem;
+  font-weight: 10;
+  display: flex;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
+
+header .header-content h1 i {
+  margin-left: 10px;
+  font-family: "Bungee Shade", sans-serif;
+  font-size: 3rem;
+  display: inline;
+  /* border: 2px solid red; */
 }
 
 header .header-content p {
-  font-size: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -142,6 +282,5 @@ header .header-content button {
   color: white;
   padding: 12px 28px;
   border-radius: 8px;
-  font-size: 1rem;
   cursor: pointer;
 }
