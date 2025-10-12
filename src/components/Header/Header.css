@@ -23,7 +23,7 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(6, 1, 33, 0.4);
+  background: rgba(6, 1, 33, 0.6);
   z-index: 8;
 }
 
@@ -128,7 +128,6 @@ header .skill-container {
   max-height: 400px;
   min-width: 250px;
   min-height: 250px;
-  /* border: 5px solid white; */
   border-radius: 1000px;
 }
 
@@ -136,28 +135,28 @@ header .skill-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  border: 5px solid white;
+  border: 5px solid #dcdcdc;
   border-radius: 50%;
   mask: conic-gradient(
     transparent 0deg 15deg,
-    white 15deg 80deg,
+    #dcdcdc 15deg 80deg,
     transparent 80deg 105deg,
-    white 105deg 170deg,
+    #dcdcdc 105deg 170deg,
     transparent 170deg 190deg,
-    white 190deg 260deg,
+    #dcdcdc 190deg 260deg,
     transparent 260deg 285deg,
-    white 285deg 350deg,
+    #dcdcdc 285deg 350deg,
     transparent 350deg 360deg
   );
   -webkit-mask: conic-gradient(
     transparent 0deg 15deg,
-    white 15deg 80deg,
+    #dcdcdc 15deg 80deg,
     transparent 80deg 105deg,
-    white 105deg 170deg,
+    #dcdcdc 105deg 170deg,
     transparent 170deg 190deg,
-    white 190deg 260deg,
+    #dcdcdc 190deg 260deg,
     transparent 260deg 285deg,
-    white 285deg 350deg,
+    #dcdcdc 285deg 350deg,
     transparent 350deg 360deg
   );
   animation: ring 20s 5s infinite;
@@ -213,7 +212,7 @@ header .skill-container .ring .skill {
   text-align: center;
   width: max-content;
   background: transparent;
-  color: white;
+  color: #dcdcdc;
 }
 
 header .skill-container .ring .skill1 {
@@ -249,17 +248,17 @@ header .header-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* align-items: center; */
-  color: white;
+  color: #dcdcdc;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
 header .header-content h1 {
   font-family: "Caveat", cursive;
-  margin-bottom: 1rem;
   font-weight: 10;
   display: flex;
+  margin-bottom: 0.5em;
+  width: 90%;
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
@@ -269,18 +268,44 @@ header .header-content h1 i {
   font-family: "Bungee Shade", sans-serif;
   font-size: 3rem;
   display: inline;
-  /* border: 2px solid red; */
+  font-weight: 100;
 }
 
-header .header-content p {
-  margin-bottom: 1.5rem;
+header .header-content .paragraph {
+  margin-bottom: 1em;
+  width: 90%;
+  color: #dcdcdc;
 }
 
-header .header-content button {
-  background: #00a384;
-  border: none;
-  color: white;
-  padding: 12px 28px;
-  border-radius: 8px;
-  cursor: pointer;
+header .header-content .icon-container {
+  margin-bottom: 3em;
+  width: 90%;
+  color: #dcdcdc;
+}
+
+header .header-content .btn-container {
+  display: flex;
+  column-gap: 4em;
+  width: 90%;
+}
+
+@media (max-width: 1300px) and (orientation: landscape) {
+  header .skill-container {
+    left: 65%;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  header .skill-container {
+    width: 20vw;
+    height: 20vw;
+    max-width: 200px;
+    max-height: 200px;
+    min-width: 180px;
+    min-height: 180px;
+  }
+
+  header .skill-container::before {
+    border: 2px solid #dcdcdc;
+  }
 }

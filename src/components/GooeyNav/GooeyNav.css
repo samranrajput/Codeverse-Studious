@@ -1,4 +1,4 @@
-:root {
+#root {
   --color-1: #060121;
   --color-2: #060121;
   --color-3: #060121;
@@ -45,7 +45,7 @@ nav ul li a {
   display: inline-block;
   padding: 0.6em 1em;
   text-decoration: none;
-  color: white;
+  color: #dcdcdc;
 }
 
 nav ul li::after {
@@ -127,5 +127,11 @@ nav .effect {
     transform: rotate(calc(var(--rotate) * 1.2))
       translate(calc(var(--end-x) * 0.5), calc(var(--end-y) * 0.5));
     opacity: 1;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  nav figure {
+    width: 80px;
   }
 }

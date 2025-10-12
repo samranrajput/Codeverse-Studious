@@ -15,6 +15,10 @@ body {
   font-size: 62.5%;
 }
 
+a {
+  text-decoration: none;
+}
+
 .sm-text {
   font-size: 1rem;
 }
@@ -48,4 +52,22 @@ body {
 img {
   width: 100%;
   height: auto;
+}
+
+@media (max-width: 1300px) and (orientation: landscape) {
+  html,
+  body {
+    font-size: 48%;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  html,
+  body {
+    font-size: 30%;
+  }
+
+  .container {
+    margin: 10px auto;
+  }
 }
