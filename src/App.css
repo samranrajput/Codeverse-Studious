@@ -46,12 +46,12 @@ a {
 .container {
   height: 100%;
   max-width: 95%;
-  margin: 20px auto;
+  margin: 10px auto;
 }
 
 img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 
 @media (max-width: 1300px) and (orientation: landscape) {
@@ -68,6 +68,13 @@ img {
   }
 
   .container {
-    margin: 10px auto;
+    margin: 3px auto;
+  }
+}
+
+@media (max-width: 570px) and (orientation: landscape) {
+  html,
+  body {
+    font-size: 25%;
   }
 }

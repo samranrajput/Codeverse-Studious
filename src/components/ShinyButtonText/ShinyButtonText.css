@@ -52,3 +52,9 @@
     padding: 4px 10px;
   }
 }
+
+@media (max-width: 570px) and (orientation: landscape) {
+  .shiny-button-text {
+    padding: 1px 8px;
+  }
+}

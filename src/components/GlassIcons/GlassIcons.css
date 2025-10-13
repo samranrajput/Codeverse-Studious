@@ -89,9 +89,23 @@
   transform: translateY(20%);
 }
 
-@media (max-width: 960px) and (orientation: landscape) {
+@media (max-width: 1300px) and (orientation: landscape) {
   .icon-btn {
     width: 10em;
     height: 10em;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  .icon-btn {
+    width: 13em;
+    height: 13em;
+  }
+}
+
+@media (max-width: 570px) and (orientation: landscape) {
+  .icon-btn {
+    width: 15em;
+    height: 15em;
   }
 }

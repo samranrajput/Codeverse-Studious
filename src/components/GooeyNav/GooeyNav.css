@@ -130,8 +130,14 @@ nav .effect {
   }
 }
 
+@media (max-width: 1300px) and (orientation: landscape) {
+  nav figure {
+    width: 100px;
+  }
+}
+
 @media (max-width: 960px) and (orientation: landscape) {
   nav figure {
-    width: 80px;
+    width: 55px;
   }
 }
