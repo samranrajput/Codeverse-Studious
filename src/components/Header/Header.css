@@ -13,6 +13,7 @@ header .header-gradient {
   width: 100%;
   height: 100%;
   inset: 0;
+  z-index: 6;
   background: #060121;
 }
 
@@ -24,7 +25,7 @@ header::before {
   width: 100%;
   height: 100%;
   background: rgba(6, 1, 33, 0.6);
-  z-index: 8;
+  z-index: 7;
 }
 
 /* Header Design Styling */
@@ -34,7 +35,7 @@ header .header-design {
   right: 0;
   width: 50%;
   height: 100%;
-  z-index: 10;
+  z-index: 8;
 }
 
 header .header-design .shape {
@@ -63,7 +64,7 @@ header .svg-animation {
   right: 0;
   width: 85%;
   height: 100%;
-  z-index: 10;
+  z-index: 8;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -73,7 +74,6 @@ header .svg-animation svg {
   float: right;
   width: 100%;
   height: 100%;
-  max-width: 600px;
 }
 
 header .svg-animation svg .st0,
@@ -116,15 +116,11 @@ header .svg-animation .svg-img-container img {
 header .skill-container {
   position: absolute;
   top: 50%;
-  left: 68%;
+  left: 70%;
   transform: translate(-50%, -50%);
-  z-index: 9;
-  width: 30vw;
-  height: 30vw;
-  /* max-width: 400px;
-  max-height: 400px;
-  min-width: 250px;
-  min-height: 250px; */
+  z-index: 7;
+  width: 80vh;
+  height: 80vh;
   border-radius: 1000px;
 }
 
@@ -238,10 +234,12 @@ header .skill-container .ring .skill4 {
 
 /* Header Content Styling */
 header .header-content {
-  position: relative;
-  z-index: 10;
+  position: absolute;
+  top: 0;
+  left: 2%;
+  z-index: 9;
   width: 50%;
-  height: 87%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -251,17 +249,19 @@ header .header-content {
 @import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap");
 
 header .header-content h1 {
-  font-family: "Caveat", cursive;
-  font-weight: 10;
   display: flex;
   margin-bottom: 0.5em;
   width: 90%;
 }
+header .header-content .stylish-heading {
+  font-family: "Caveat", cursive;
+  font-weight: 10;
+}
 
 @import url("https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap");
 
-header .header-content h1 i {
-  margin-left: 10px;
+header .header-content h1 .stylish-font {
+  margin-left: 20px;
   font-family: "Bungee Shade", sans-serif;
   font-size: 3rem;
   display: inline;
@@ -292,14 +292,161 @@ header .header-content .btn-container {
   }
 
   header .skill-container {
-    left: 65%;
+    left: 70%;
+    width: 60vh;
+    height: 60vh;
+  }
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  header .header-design {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    z-index: 8;
+  }
+
+  header .header-design .shape {
+    width: 100%;
+    height: 15%;
+    background: rgba(0, 163, 133, 0.6);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    animation: header-design-animation 2s forwards;
+  }
+
+  @keyframes header-design-animation {
+    0% {
+      clip-path: polygon(0 0, 30% 0, 50% 40%, 70% 0, 100% 0, 100% 100%, 0 100%);
+    }
+    100% {
+      clip-path: polygon(0 0, 0 0, 50% 100%, 100% 0, 100% 0, 100% 100%, 0 100%);
+    }
+  }
+
+  header .svg-animation {
+    width: 100%;
+    height: 45%;
+  }
+
+  header .svg-animation svg .st0,
+  header .svg-animation svg .st1,
+  header .svg-animation svg .st2 {
+    stroke: #00a384;
+  }
+
+  header .svg-animation .svg-img-container {
+    width: 35%;
+    height: 35vw;
+  }
+
+  header .skill-container {
+    top: 128%;
+    left: 50%;
+    width: 100vw;
+    height: 100vw;
+  }
+
+  header .skill-container::before {
+    mask: conic-gradient(
+      transparent 0deg 12deg,
+      #dcdcdc 12deg 70deg,
+      transparent 70deg 110deg,
+      #dcdcdc 110deg 160deg,
+      transparent 160deg 200deg,
+      #dcdcdc 200deg 254deg,
+      transparent 254deg 285deg,
+      #dcdcdc 285deg 346deg,
+      transparent 346deg 360deg
+    );
+    -webkit-mask: conic-gradient(
+      transparent 0deg 12deg,
+      #dcdcdc 12deg 70deg,
+      transparent 70deg 110deg,
+      #dcdcdc 110deg 160deg,
+      transparent 160deg 200deg,
+      #dcdcdc 200deg 254deg,
+      transparent 254deg 285deg,
+      #dcdcdc 285deg 346deg,
+      transparent 346deg 360deg
+    );
+  }
+
+  header .skill-container .ring .skill1 {
+    transform: translate(-50%, -50%) rotate(270deg);
+  }
+
+  header .skill-container .ring .skill2 {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  header .skill-container .ring .skill3 {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+
+  header .skill-container .ring .skill4 {
+    transform: translate(-50%, -50%) rotate(180deg);
+  }
+
+  header .header-content {
+    width: 100%;
+    height: 45%;
+    left: 0;
+    top: 40%;
+    align-items: center;
+  }
+
+  header .header-content h1 {
+    display: block;
+    margin-bottom: 0em;
+    width: 100%;
+  }
+  header .header-content .stylish-heading {
+    text-align: center;
+  }
+
+  header .header-content h1 .stylish-font {
+    width: 100%;
+    margin-left: 0;
+    text-align: center;
+    display: block;
+  }
+
+  header .header-content .paragraph {
+    margin-bottom: 0em;
+    margin-top: 0.6em;
+    text-align: center;
+  }
+
+  header .header-content .icon-container {
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
+  header .header-content .btn-container {
+    justify-content: center;
+    column-gap: 2em;
+    width: 100%;
   }
 }
 
 @media (max-width: 960px) and (orientation: landscape) {
+  header {
+    border: 8px double #00a384;
+  }
+
   header .svg-animation .svg-img-container {
     width: 42%;
     height: 52vh;
+  }
+
+  header .skill-container {
+    left: 65%;
   }
 
   header .skill-container::before {

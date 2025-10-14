@@ -37,7 +37,7 @@ const GlassIcons = ({ items, className }) => {
               {item.icon}
             </span>
           </span>
-          <span className="icon-btn__label sm-text">{item.label}</span>
+          <span className="icon-btn__label normal-text">{item.label}</span>
         </a>
       ))}
     </div>

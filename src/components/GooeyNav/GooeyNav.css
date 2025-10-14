@@ -31,8 +31,8 @@ nav figure {
 nav ul {
   display: flex;
   justify-content: space-evenly;
+  position: relative;
   list-style: none;
-  z-index: 2;
 }
 
 nav ul li {
@@ -72,6 +72,7 @@ nav .effect {
   width: 0;
   height: 0;
   opacity: 1;
+  color: transparent;
   pointer-events: none;
   display: grid;
   place-items: center;
@@ -82,8 +83,8 @@ nav .effect {
 .point {
   display: block;
   opacity: 0;
-  width: 20px;
-  height: 20px;
+  width: 15px;
+  height: 15px;
   border-radius: 100%;
   transform-origin: center;
 }
@@ -130,14 +131,110 @@ nav .effect {
   }
 }
 
+nav .burger-menu {
+  display: none;
+}
+
+nav ul .sidebar-logo {
+  display: none;
+}
+
 @media (max-width: 1300px) and (orientation: landscape) {
   nav figure {
     width: 100px;
   }
 }
 
+@media (max-width: 850px) and (orientation: portrait) {
+  #root {
+    --color-1: #00a384;
+    --color-2: #00a384;
+    --color-3: #00a384;
+    --color-1: #00a384;
+    --color-2: #00a384;
+    --color-3: #00a384;
+    --color-1: #00a384;
+    --color-4: #00a384;
+  }
+  nav .burger-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 11;
+  }
+
+  nav .burger-menu .i {
+    color: #dcdcdc;
+  }
+
+  nav .burger-menu .hix {
+    color: #dcdcdc;
+    position: absolute;
+    top: -20%;
+    right: -3%;
+  }
+
+  nav {
+    position: relative;
+    backdrop-filter: none;
+  }
+
+  nav::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    z-index: -1;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  nav ul .sidebar-logo {
+    display: block;
+    width: 80%;
+  }
+
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 50%;
+    height: 100vh;
+    background: #060121;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5em;
+    transition: right 0.4s ease-in-out;
+  }
+
+  nav ul.active {
+    right: 0;
+  }
+
+  nav ul li::after {
+    background: #00a384;
+  }
+
+  .particle,
+  .point {
+    display: none;
+  }
+}
+
 @media (max-width: 960px) and (orientation: landscape) {
   nav figure {
-    width: 55px;
+    width: 60px;
+  }
+
+  .particle,
+  .point {
+    width: 10px;
+    height: 10px;
   }
 }

@@ -1,7 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import logo from "../../assets/logo.png";
+import sideBarLogo from "../../assets/side_bar_logo.png";
 import "./GooeyNav.css";
-
+import { HiMenuAlt4, HiX } from "react-icons/hi";
 const GooeyNav = ({
   items,
   animationTime = 600,
@@ -149,17 +150,50 @@ const GooeyNav = ({
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
 
+  // Side Bar Scripting
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    };
+
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
+
   return (
     <nav className="gooey-nav-container" ref={containerRef}>
       <figure>
         <img src={logo} alt="Codeverse Studious Logo"></img>
       </figure>
-      <ul ref={navRef} className="normal-text">
+      <div className="burger-menu" onClick={() => setMenuOpen(!menuOpen)}>
+        {menuOpen ? (
+          <HiX className="lg-heading hix" />
+        ) : (
+          <HiMenuAlt4 className="lg-heading i" />
+        )}
+      </div>
+      <ul ref={navRef} className={`normal-text ${menuOpen ? "active" : ""}`}>
+        <figure class="sidebar-logo">
+          <img src={sideBarLogo} alt="Side Bar Codeverse Studious Logo"></img>
+        </figure>
         {items.map((item, index) => (
           <li key={index} className={activeIndex === index ? "active" : ""}>
             <a
               href={item.href}
-              onClick={(e) => handleClick(e, index)}
+              onClick={(e) => {
+                handleClick(e, index);
+                setMenuOpen(false);
+              }}
               onKeyDown={(e) => handleKeyDown(e, index)}
             >
               {item.label}

@@ -61,6 +61,13 @@ img {
   }
 }
 
+@media (max-width: 850px) and (orientation: portrait) {
+  html,
+  body {
+    font-size: 80%;
+  }
+}
+
 @media (max-width: 960px) and (orientation: landscape) {
   html,
   body {

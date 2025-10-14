@@ -63,6 +63,7 @@ function Header() {
   return (
     <header>
       <div className="container">
+        <Navbar />
         <div class="header-design">
           <div
             className="svg-animation"
@@ -155,7 +156,6 @@ function Header() {
             </div>
           </div>
         </div>
-        <Navbar />
         <div className="header-gradient">
           <GradientBlinds
             gradientColors={["#00a384", "#00a384"]}
@@ -181,17 +181,15 @@ function Header() {
               delay={200}
               animateBy="char"
               direction="top"
-              className="text-2xl mb-4"
+              className="stylish-heading"
             />
-            <i>
-              <BlurText
-                text="Muhammad Samran"
-                delay={200}
-                animateBy="char"
-                direction="top"
-                className="text-2xl mb-4"
-              />
-            </i>
+            <BlurText
+              text="Muhammad Samran"
+              delay={200}
+              animateBy="char"
+              direction="top"
+              className="stylish-font"
+            />
           </h1>
           <h1 className="lg-heading">
             <BlurText
@@ -199,32 +197,29 @@ function Header() {
               delay={200}
               animateBy="char"
               direction="top"
-              className="text-2xl mb-4"
+              className="stylish-heading"
             />
-            <i>
-              <BlurText
-                text="Software Engineer"
-                delay={200}
-                animateBy="char"
-                direction="top"
-                className="text-2xl mb-4"
-              />
-            </i>
+            <BlurText
+              text="Software Engineer"
+              delay={200}
+              animateBy="char"
+              direction="top"
+              className="stylish-font"
+            />
           </h1>
-          <p className="lg-text paragraph">
-            <TextType
-              text={[
-                "I'm a Full Stack Web Developer who loves building websites that don't just look great they perform beautifully.",
-                "From dynamic business websites to full-scale web applications, I turn ideas into reality with clean code and modern design.",
-                "My goal is to help businesses grow online through fast, secure, and engaging digital experiences.",
-                "If you're looking for a developer who truly cares about quality, you're in the right place.",
-              ]}
-              typingSpeed={30}
-              pauseDuration={5000}
-              showCursor={true}
-              cursorCharacter="_"
-            />
-          </p>
+          <TextType
+            text={[
+              "I'm a Full Stack Web Developer who loves building websites that don't just look great they perform beautifully.",
+              "From dynamic business websites to full-scale web applications, I turn ideas into reality with clean code and modern design.",
+              "My goal is to help businesses grow online through fast, secure, and engaging digital experiences.",
+              "If you're looking for a developer who truly cares about quality, you're in the right place.",
+            ]}
+            typingSpeed={30}
+            pauseDuration={5000}
+            showCursor={true}
+            cursorCharacter="_"
+            className="lg-text paragraph"
+          />
           <div className="icon-container">
             <GlassIcons items={items} className="custom-class" />
           </div>
@@ -232,7 +227,11 @@ function Header() {
             <a href={myResume} target="_blank" rel="noreferrer">
               <ShinyButtonText text="My Resume" speed={2.5} />
             </a>
-            <a href="https://wa.me/923172960156" target="_blank" rel="noreferrer">
+            <a
+              href="https://wa.me/923172960156"
+              target="_blank"
+              rel="noreferrer"
+            >
               <ShinyButtonText text="Hire Me Now !" speed={2.5} />
             </a>
           </div>
