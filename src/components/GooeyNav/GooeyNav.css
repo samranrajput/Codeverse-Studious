@@ -156,6 +156,11 @@ nav ul .sidebar-logo {
     --color-1: #00a384;
     --color-4: #00a384;
   }
+
+  nav figure {
+    width: 120px;
+  }
+
   nav .burger-menu {
     display: flex;
     justify-content: center;
@@ -236,5 +241,17 @@ nav ul .sidebar-logo {
   .point {
     width: 10px;
     height: 10px;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  nav figure {
+    width: 100px;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  nav figure {
+    width: 60px;
   }
 }

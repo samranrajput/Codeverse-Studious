@@ -10,7 +10,7 @@ const ShinyButtonText = ({ text = "Shiny Button", speed = 3, disabled = false, c
       style={{ "--shine-speed": animationDuration }}
       disabled={disabled}
     >
-      <span className="shine-text lg-text">{text}</span>
+      <span className="shine-text normal-text">{text}</span>
     </button>
   );
 };

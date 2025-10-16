@@ -453,3 +453,82 @@ header .header-content .btn-container {
     border: 2px solid #dcdcdc;
   }
 }
+
+@media (max-width: 450px) and (orientation: portrait) {
+  header {
+    border: 10px double #00a384;
+  }
+
+  header .header-design .shape {
+    height: 8%;
+  }
+
+  header .svg-animation {
+    margin-top: 5%;
+    height: 38%;
+  }
+
+  header .svg-animation .svg-img-container {
+    width: 40%;
+    height: 40vw;
+  }
+
+  header .header-content {
+    height: 45%;
+    top: 40%;
+  }
+
+  header .header-content .paragraph {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    text-align: center;
+  }
+
+  header .header-content .icon-container {
+    margin-bottom: 5em;
+    width: 100%;
+  }
+
+  header .header-content .btn-container {
+    column-gap: 5em;
+  }
+
+  header .skill-container {
+    top: 118%;
+    width: 100vw;
+    height: 100vw;
+  }
+
+  header .skill-container::before {
+    border: 3px solid #dcdcdc;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  header {
+    border: 5px double #00a384;
+  }
+
+  header .svg-animation {
+    height: 40%;
+  }
+
+  header .svg-animation .svg-img-container {
+    width: 33%;
+    height: 33vw;
+  }
+
+  header .header-content .icon-container {
+    margin-bottom: 10em;
+  }
+
+  header .skill-container {
+    top: 125%;
+    width: 100vw;
+    height: 100vw;
+  }
+
+  header .skill-container::before {
+    border: 3px solid #dcdcdc;
+  }
+}

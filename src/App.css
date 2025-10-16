@@ -79,9 +79,23 @@ img {
   }
 }
 
+@media (max-width: 450px) and (orientation: portrait) {
+  html,
+  body {
+    font-size: 50%;
+  }
+}
+
 @media (max-width: 570px) and (orientation: landscape) {
   html,
   body {
     font-size: 25%;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  html,
+  body {
+    font-size: 30%;
   }
 }

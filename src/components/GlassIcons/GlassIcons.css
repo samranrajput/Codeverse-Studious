@@ -99,7 +99,7 @@
 @media (max-width: 850px) and (orientation: portrait) {
   .icon-btns {
     justify-content: center;
-    column-gap: 3em;
+    column-gap: 5em;
   }
 
   .icon-btn {
@@ -115,9 +115,31 @@
   }
 }
 
+@media (max-width: 450px) and (orientation: portrait) {
+  .icon-btns {
+    column-gap: 5em;
+  }
+
+  .icon-btn {
+    width: 8em;
+    height: 8em;
+  }
+}
+
 @media (max-width: 570px) and (orientation: landscape) {
   .icon-btn {
     width: 15em;
     height: 15em;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  .icon-btns {
+    column-gap: 10em;
+  }
+
+  .icon-btn {
+    width: 12em;
+    height: 12em;
   }
 }
