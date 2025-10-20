@@ -27,6 +27,8 @@ const GlassIcons = ({ items, className }) => {
           rel="noopener noreferrer"
           className={`icon-btn ${item.customClass || ""}`}
           aria-label={item.label}
+          data-aos={item.aos}
+          data-aos-delay={item.aosDelay}
         >
           <span
             className="icon-btn__back"

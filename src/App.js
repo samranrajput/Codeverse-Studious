@@ -1,5 +1,8 @@
-import React, { useEffect } from "react";
-import Header from "./components/Header/Header";
+import React, { useState, useEffect, useRef } from "react";
+import Home from "./components/Home/Home";
+import AboutUs from "./components/AboutUs/AboutUs";
+import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
+
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -8,12 +11,43 @@ function App() {
     AOS.init({
       duration: 2000,
       once: true,
-      easing: "ease-in-out",
     });
   }, []);
+
+  const [activeSection, setActiveSection] = useState("home");
+  const homeRef = useRef(null);
+  const aboutRef = useRef(null);
+
+  useEffect(() => {
+    const options = {
+      threshold: 0.5, // 50% section visible ho to trigger kare
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id);
+        }
+      });
+    }, options);
+
+    if (homeRef.current) observer.observe(homeRef.current);
+    if (aboutRef.current) observer.observe(aboutRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
-      <Header />
+      <SmoothScroll />
+
+      <div id="home" ref={homeRef}>
+        <Home isActive={activeSection === "home"} />
+      </div>
+
+      <div id="about" ref={aboutRef}>
+        <AboutUs isActive={activeSection === "about"} />
+      </div>
     </>
   );
 }

@@ -1,0 +1,70 @@
+import React from "react";
+import ProfileCard from "../ProfileCard/ProfileCard";
+import FallingText from "../FallingText/FallingText";
+import GradientText from "../GradientText/GradientText";
+import "./AboutUs.css";
+import aboutImage from "../../assets/about-image.png";
+import sideBarLogo from "../../assets/side_bar_logo.png";
+
+function AboutUs({ isActive }) {
+  return (
+    <section id="about" className="about">
+      <div className="about-content">
+        <GradientText
+            colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+            animationSpeed={3}
+            showBorder={false}
+            className="custom-class"
+            children="About Us"
+          ></GradientText>
+        <div className="container">
+          <div className="profile-card">
+            <ProfileCard
+              name="Muhammad Samran"
+              title="Software Engineer"
+              handle="codeverse_studious"
+              status="Online"
+              contactText="Contact Me"
+              avatarUrl={aboutImage}
+              iconUrl={sideBarLogo}
+              miniAvatarUrl={sideBarLogo}
+              showUserInfo={true}
+              enableTilt={true}
+              enableMobileTilt={true}
+              onContactClick={() => console.log("Contact clicked")}
+            />
+          </div>
+          <div className="story">
+            <FallingText
+              text="I started learning programming at the age of 15, and now at 18, I proudly hold 6 programming certificates. My passion for coding drives me to create powerful, dynamic, and visually appealing websites that bring ideas to life. Over the past three years, I have built many real-world projects some of which you can explore below in the projects section."
+              highlightWords={[
+                "programming",
+                "15",
+                "18",
+                "6",
+                "certificates",
+                "powerful",
+                "dynamic",
+                "real-world",
+                "projects",
+                "three",
+                "years",
+                "coding",
+                "passion",
+                "websites",
+              ]}
+              highlightClass="highlighted"
+              trigger="hover"
+              backgroundColor="transparent"
+              wireframes={false}
+              gravity={2}
+              mouseConstraintStiffness={0.1}
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default AboutUs;

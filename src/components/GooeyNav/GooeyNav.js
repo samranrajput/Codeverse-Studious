@@ -172,7 +172,7 @@ const GooeyNav = ({
 
   return (
     <nav className="gooey-nav-container" ref={containerRef}>
-      <figure>
+      <figure data-aos="fade-right">
         <img src={logo} alt="Codeverse Studious Logo"></img>
       </figure>
       <div className="burger-menu" onClick={() => setMenuOpen(!menuOpen)}>
@@ -187,7 +187,12 @@ const GooeyNav = ({
           <img src={sideBarLogo} alt="Side Bar Codeverse Studious Logo"></img>
         </figure>
         {items.map((item, index) => (
-          <li key={index} className={activeIndex === index ? "active" : ""}>
+          <li
+            key={index}
+            className={activeIndex === index ? "active" : ""}
+            data-aos={item.aos}
+            data-aos-delay={item.aosDelay}
+          >
             <a
               href={item.href}
               onClick={(e) => {

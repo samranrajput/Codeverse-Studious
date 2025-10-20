@@ -5,8 +5,8 @@ import BlurText from "../BlurText/BlurText";
 import TextType from "../TextType/TextType";
 import GlassIcons from "../GlassIcons/GlassIcons";
 import ShinyButtonText from "../ShinyButtonText/ShinyButtonText";
-import "./Header.css";
-import headerImage from "../../assets/header-image.png";
+import "./Home.css";
+import headerImage from "../../assets/home_image.png";
 import myResume from "../../assets/docs/my_resume.pdf";
 import {
   FaGithub,
@@ -21,47 +21,53 @@ import {
 } from "react-icons/fa";
 import { FaMobileScreenButton } from "react-icons/fa6";
 
-function Header() {
+function Home({ isActive }) {
   const items = [
     {
       icon: <FaInstagram />,
       color: "#00a384",
       label: "Instagram",
       link: "https://www.instagram.com/codeverse_studious/",
+      aos: "fade-right",
     },
     {
       icon: <FaTiktok />,
       color: "#00a384",
       label: "Tiktok",
       link: "https://www.tiktok.com/@codeverse_studious",
+      aos: "fade-right",
     },
     {
       icon: <FaLinkedinIn />,
       color: "#00a384",
       label: "LinkedIn",
       link: "https://www.linkedin.com/in/codeverse-studios/",
+      aos: "fade-down",
     },
     {
       icon: <FaWhatsapp />,
       color: "#00a384",
       label: "Whatsapp",
       link: "https://whatsapp.com/channel/0029VaDYqDWHVvTRrQ5OoN3p",
+      aos: "fade-down",
     },
     {
       icon: <FaFacebookF />,
       color: "#00a384",
       label: "Facebook",
       link: "https://www.facebook.com/codeversestudious",
+      aos: "fade-left",
     },
     {
       icon: <FaGithub />,
       color: "#00a384",
       label: "GibHub",
       link: "https://github.com/samranrajput",
+      aos: "fade-left",
     },
   ];
   return (
-    <header>
+    <header id="home">
       <div className="container">
         <Navbar />
         <div class="header-design">
@@ -170,6 +176,7 @@ function Header() {
             distortAmount={0}
             shineDirection="left"
             mixBlendMode="lighten"
+            paused={!isActive}
           />
         </div>
 
@@ -224,13 +231,19 @@ function Header() {
             <GlassIcons items={items} className="custom-class" />
           </div>
           <div className="btn-container">
-            <a href={myResume} target="_blank" rel="noreferrer">
+            <a
+              href={myResume}
+              target="_blank"
+              rel="noreferrer"
+              data-aos="fade-right"
+            >
               <ShinyButtonText text="My Resume" speed={2.5} />
             </a>
             <a
               href="https://wa.me/923172960156"
               target="_blank"
               rel="noreferrer"
+              data-aos="fade-left"
             >
               <ShinyButtonText text="Hire Me Now !" speed={2.5} />
             </a>
@@ -241,4 +254,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Home;

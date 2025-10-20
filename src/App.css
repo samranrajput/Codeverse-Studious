@@ -10,7 +10,7 @@
 
 html,
 body {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
   font-family: "Roboto", sans-serif;
   font-size: 62.5%;
 }
@@ -46,7 +46,7 @@ a {
 .container {
   height: 100%;
   max-width: 95%;
-  margin: 10px auto;
+  margin: auto;
 }
 
 img {
@@ -72,10 +72,6 @@ img {
   html,
   body {
     font-size: 30%;
-  }
-
-  .container {
-    margin: 3px auto;
   }
 }
 

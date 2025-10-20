@@ -10,7 +10,12 @@
 }
 
 nav {
-  position: relative;
+  position: fixed;
+  top: 2%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 95%;
   z-index: 10;
   background: rgba(255, 255, 255, 0.1);
   display: flex;
@@ -20,7 +25,6 @@ nav {
   border-radius: 50px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  width: 100%;
   box-shadow: 0 0 30px rgba(0, 163, 132, 0.3);
 }
 
@@ -181,7 +185,6 @@ nav ul .sidebar-logo {
   }
 
   nav {
-    position: relative;
     backdrop-filter: none;
   }
 

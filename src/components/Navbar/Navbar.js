@@ -2,14 +2,14 @@ import React from "react";
 import GooeyNav from "../GooeyNav/GooeyNav";
 
 const items = [
-  { label: "Home", href: "#" },
-  { label: "Highlights", href: "#" },
-  { label: "About Us", href: "#" },
-  { label: "Resume", href: "#" },
-  { label: "Servisece", href: "#" },
-  { label: "Projects", href: "#" },
-  { label: "Clients Reviews", href: "#" },
-  { label: "Contact Us", href: "#" },
+  { label: "Home", href: "#home", aos: "fade-down"},
+  { label: "About Us", href: "#about", aos: "fade-down", aosDelay: "400" },
+  { label: "Highlights", href: "#", aos: "fade-down", aosDelay: "800" },
+  { label: "Servisece", href: "#", aos: "fade-down", aosDelay: "1200" },
+  { label: "Resume", href: "#", aos: "fade-down", aosDelay: "1600" },
+  { label: "Projects", href: "#", aos: "fade-down", aosDelay: "2000" },
+  { label: "Clients Reviews", href: "#", aos: "fade-down", aosDelay: "2400" },
+  { label: "Contact Us", href: "#", aos: "fade-down", aosDelay: "2800" },
 ];
 
 function Navbar() {
