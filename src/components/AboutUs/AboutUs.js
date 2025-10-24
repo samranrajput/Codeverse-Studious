@@ -1,6 +1,6 @@
 import React from "react";
 import ProfileCard from "../ProfileCard/ProfileCard";
-import FallingText from "../FallingText/FallingText";
+import SplitText from "../SplitText/SplitText";
 import GradientText from "../GradientText/GradientText";
 import "./AboutUs.css";
 import aboutImage from "../../assets/about-image.png";
@@ -8,15 +8,15 @@ import sideBarLogo from "../../assets/side_bar_logo.png";
 
 function AboutUs({ isActive }) {
   return (
-    <section id="about" className="about">
+    <section className="about themed-bg">
       <div className="about-content">
         <GradientText
-            colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-            animationSpeed={3}
-            showBorder={false}
-            className="custom-class"
-            children="About Us"
-          ></GradientText>
+          colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
+          animationSpeed={3}
+          showBorder={false}
+          className="custom-class"
+          children="About Us"
+        ></GradientText>
         <div className="container">
           <div className="profile-card">
             <ProfileCard
@@ -34,31 +34,20 @@ function AboutUs({ isActive }) {
               onContactClick={() => console.log("Contact clicked")}
             />
           </div>
-          <div className="story">
-            <FallingText
+          <div className="story sm-heading">
+            <SplitText
               text="I started learning programming at the age of 15, and now at 18, I proudly hold 6 programming certificates. My passion for coding drives me to create powerful, dynamic, and visually appealing websites that bring ideas to life. Over the past three years, I have built many real-world projects some of which you can explore below in the projects section."
-              highlightWords={[
-                "programming",
-                "15",
-                "18",
-                "6",
-                "certificates",
-                "powerful",
-                "dynamic",
-                "real-world",
-                "projects",
-                "three",
-                "years",
-                "coding",
-                "passion",
-                "websites",
-              ]}
-              highlightClass="highlighted"
-              trigger="hover"
-              backgroundColor="transparent"
-              wireframes={false}
-              gravity={2}
-              mouseConstraintStiffness={0.1}
+              className="text-2xl font-semibold text-center themed-text"
+              delay={20}
+              duration={0.6}
+              ease="power3.out"
+              splitType="chars"
+              from={{ opacity: 0, y: 40 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.1}
+              rootMargin="-100px"
+              textAlign="center"
+              isActive={isActive}
             />
           </div>
         </div>

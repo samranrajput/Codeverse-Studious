@@ -67,8 +67,25 @@ function Home({ isActive }) {
     },
   ];
   return (
-    <header id="home">
+    <header class="themed-bg">
       <div className="container">
+        <div className="header-gradient themed-bg">
+          <GradientBlinds
+            gradientColors={["#00a384", "#00a384"]}
+            angle={50}
+            noise={0}
+            blindCount={64}
+            blindMinWidth={40}
+            spotlightRadius={0.6}
+            spotlightSoftness={1}
+            spotlightOpacity={1}
+            mouseDampening={1}
+            distortAmount={0}
+            shineDirection="left"
+            mixBlendMode="lighten"
+            paused={!isActive}
+          />
+        </div>
         <Navbar />
         <div class="header-design">
           <div
@@ -162,23 +179,6 @@ function Home({ isActive }) {
             </div>
           </div>
         </div>
-        <div className="header-gradient">
-          <GradientBlinds
-            gradientColors={["#00a384", "#00a384"]}
-            angle={50}
-            noise={0}
-            blindCount={64}
-            blindMinWidth={40}
-            spotlightRadius={0.6}
-            spotlightSoftness={1}
-            spotlightOpacity={1}
-            mouseDampening={1}
-            distortAmount={0}
-            shineDirection="left"
-            mixBlendMode="lighten"
-            paused={!isActive}
-          />
-        </div>
 
         {/* 🌟 Overlay Content */}
         <div className="header-content">
@@ -188,7 +188,7 @@ function Home({ isActive }) {
               delay={200}
               animateBy="char"
               direction="top"
-              className="stylish-heading"
+              className="stylish-heading themed-text"
             />
             <BlurText
               text="Muhammad Samran"
@@ -204,7 +204,7 @@ function Home({ isActive }) {
               delay={200}
               animateBy="char"
               direction="top"
-              className="stylish-heading"
+              className="stylish-heading themed-text"
             />
             <BlurText
               text="Software Engineer"
@@ -225,7 +225,7 @@ function Home({ isActive }) {
             pauseDuration={5000}
             showCursor={true}
             cursorCharacter="_"
-            className="lg-text paragraph"
+            className="lg-text paragraph themed-text"
           />
           <div className="icon-container">
             <GlassIcons items={items} className="custom-class" />

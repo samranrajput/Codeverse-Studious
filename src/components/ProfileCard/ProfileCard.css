@@ -355,7 +355,6 @@
 
 .pc-details h3 {
   font-weight: 600;
-  /* font-size: min(5svh, 10em); */
   margin-bottom: 15px;
   background-image: linear-gradient(to bottom, #fff, #6f6fbe);
   background-size: 1em 1.5em;
@@ -400,7 +399,7 @@
 
 @media (max-width: 1300px) and (orientation: landscape) {
   .pc-card {
-    height: 72svh;
+    height: 70svh;
   }
 
   .pc-card-wrapper {
@@ -409,19 +408,15 @@
 }
 
 @media (max-width: 960px) and (orientation: landscape) {
-  .pc-card {
-    height: 75svh;
-  }
-
   .pc-card-wrapper {
     width: 50%;
   }
 
   .pc-user-info {
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    height: 40px;
+    bottom: 5px;
+    left: 8px;
+    right: 8px;
+    height: 35px;
     padding: 5px 10px;
   }
 
@@ -436,40 +431,57 @@
 }
 
 @media (max-width: 850px) and (orientation: portrait) {
-  .pc-card {
-    height: 54svh;
-  }
-}
-
-@media (max-width: 450px) and (orientation: portrait) {
   .pc-card-wrapper {
-    width: 70%;
+    width: 45%;
   }
 
   .pc-card {
     height: 45svh;
   }
 
-  .pc-user-details {
-    gap: 0px;
+  .pc-details h3 {
+    font-size: 2.5rem;
   }
 
-  .pc-user-info {
-    height: 50px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
-    padding: 0px 5px;
+  .pc-details p {
+    font-size: 2rem;
   }
 }
 
-@media (max-width: 320px) and (orientation: portrait) {
+@media (max-width: 450px) and (orientation: portrait) {
   .pc-card-wrapper {
     width: 60%;
   }
 
   .pc-card {
-    height: 48svh;
+    height: 40svh;
+  }
+
+  .pc-user-details {
+    gap: 5px;
+  }
+
+  .pc-user-info {
+    height: 45px;
+    bottom: 5px;
+    left: 8px;
+    right: 8px;
+    padding: 0px 5px;
+  }
+
+  .pc-mini-avatar {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  .pc-card-wrapper {
+    width: 50%;
+  }
+
+  .pc-card {
+    height: 40svh;
   }
 
   .pc-mini-avatar {

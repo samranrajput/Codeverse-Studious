@@ -25,7 +25,7 @@ const TextType = ({
   cursorCharacter = "_",
   cursorClassName = "",
   cursorBlinkDuration = 0.4,
-  textColors = ["#dcdcdc"],
+  // textColors = ["#dcdcdc"],
   variableSpeed,
   onSentenceComplete,
   startOnVisible = false,
@@ -51,10 +51,10 @@ const TextType = ({
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
 
-  const getCurrentTextColor = () => {
-    if (textColors.length === 0) return "#ffffff";
-    return textColors[currentTextIndex % textColors.length];
-  };
+  // const getCurrentTextColor = () => {
+  //   if (textColors.length === 0) return "#ffffff";
+  //   return textColors[currentTextIndex % textColors.length];
+  // };
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;
@@ -173,7 +173,7 @@ const TextType = ({
     },
     <span
       className="text-type__content"
-      style={{ color: getCurrentTextColor() }}
+      style={{}}
     >
       {displayedText}
     </span>,

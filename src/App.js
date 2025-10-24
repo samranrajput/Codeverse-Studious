@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
+import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 import Home from "./components/Home/Home";
 import AboutUs from "./components/AboutUs/AboutUs";
-import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
-
+import Highlights from "./components/Highlights/Highlights";
 import "./App.css";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
 function App() {
   useEffect(() => {
     AOS.init({
@@ -17,10 +18,11 @@ function App() {
   const [activeSection, setActiveSection] = useState("home");
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
+  const highlightsRef = useRef(null);
 
   useEffect(() => {
     const options = {
-      threshold: 0.5, // 50% section visible ho to trigger kare
+      threshold: 0.5,
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -33,6 +35,7 @@ function App() {
 
     if (homeRef.current) observer.observe(homeRef.current);
     if (aboutRef.current) observer.observe(aboutRef.current);
+    if (highlightsRef.current) observer.observe(highlightsRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -40,13 +43,16 @@ function App() {
   return (
     <>
       <SmoothScroll />
-
       <div id="home" ref={homeRef}>
         <Home isActive={activeSection === "home"} />
       </div>
 
       <div id="about" ref={aboutRef}>
         <AboutUs isActive={activeSection === "about"} />
+      </div>
+      
+      <div id="highlights" ref={highlightsRef}>
+        <Highlights isActive={activeSection === "highlights"} />
       </div>
     </>
   );

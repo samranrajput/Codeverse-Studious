@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import ThemeToggle from "../ThemeToggle/ThemeToggle";
 import logo from "../../assets/logo.png";
 import sideBarLogo from "../../assets/side_bar_logo.png";
 import "./GooeyNav.css";
@@ -175,13 +176,6 @@ const GooeyNav = ({
       <figure data-aos="fade-right">
         <img src={logo} alt="Codeverse Studious Logo"></img>
       </figure>
-      <div className="burger-menu" onClick={() => setMenuOpen(!menuOpen)}>
-        {menuOpen ? (
-          <HiX className="lg-heading hix" />
-        ) : (
-          <HiMenuAlt4 className="lg-heading i" />
-        )}
-      </div>
       <ul ref={navRef} className={`normal-text ${menuOpen ? "active" : ""}`}>
         <figure class="sidebar-logo">
           <img src={sideBarLogo} alt="Side Bar Codeverse Studious Logo"></img>
@@ -189,7 +183,7 @@ const GooeyNav = ({
         {items.map((item, index) => (
           <li
             key={index}
-            className={activeIndex === index ? "active" : ""}
+            className={`${activeIndex === index ? "active" : ""}`}
             data-aos={item.aos}
             data-aos-delay={item.aosDelay}
           >
@@ -200,12 +194,23 @@ const GooeyNav = ({
                 setMenuOpen(false);
               }}
               onKeyDown={(e) => handleKeyDown(e, index)}
+              className="themed-text"
             >
               {item.label}
             </a>
           </li>
         ))}
       </ul>
+      <div className="right-section">
+        <ThemeToggle />
+        <div className="burger-menu" onClick={() => setMenuOpen(!menuOpen)}>
+          {menuOpen ? (
+            <HiX className="lg-heading hix themed-text" />
+          ) : (
+            <HiMenuAlt4 className="lg-heading i themed-text" />
+          )}
+        </div>
+      </div>
       <span className="effect filter" ref={filterRef} />
       <span className="effect text" ref={textRef} />
     </nav>

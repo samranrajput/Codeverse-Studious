@@ -2,7 +2,6 @@
 header {
   width: 100%;
   height: 100vh;
-  background: #060121;
   position: relative;
   overflow: hidden;
   border: 15px double #00a384;
@@ -14,7 +13,6 @@ header .header-gradient {
   height: 100%;
   inset: 0;
   z-index: 6;
-  background: #060121;
 }
 
 header::before {
@@ -26,6 +24,10 @@ header::before {
   height: 100%;
   background: rgba(6, 1, 33, 0.6);
   z-index: 7;
+}
+
+html[data-bs-theme="light"] header::before {
+  display: none;
 }
 
 /* Header Design Styling */
@@ -128,28 +130,28 @@ header .skill-container::before {
   content: "";
   position: absolute;
   inset: 0;
-  border: 5px solid #dcdcdc;
+  border: 5px solid #00a384;
   border-radius: 50%;
   mask: conic-gradient(
     transparent 0deg 15deg,
-    #dcdcdc 15deg 80deg,
+    #00a384 15deg 80deg,
     transparent 80deg 105deg,
-    #dcdcdc 105deg 170deg,
+    #00a384 105deg 170deg,
     transparent 170deg 190deg,
-    #dcdcdc 190deg 260deg,
+    #00a384 190deg 260deg,
     transparent 260deg 285deg,
-    #dcdcdc 285deg 350deg,
+    #00a384 285deg 350deg,
     transparent 350deg 360deg
   );
   -webkit-mask: conic-gradient(
     transparent 0deg 15deg,
-    #dcdcdc 15deg 80deg,
+    #00a384 15deg 80deg,
     transparent 80deg 105deg,
-    #dcdcdc 105deg 170deg,
+    #00a384 105deg 170deg,
     transparent 170deg 190deg,
-    #dcdcdc 190deg 260deg,
+    #00a384 190deg 260deg,
     transparent 260deg 285deg,
-    #dcdcdc 285deg 350deg,
+    #00a384 285deg 350deg,
     transparent 350deg 360deg
   );
   animation: ring 20s 5s infinite;
@@ -205,7 +207,7 @@ header .skill-container .ring .skill {
   text-align: center;
   width: max-content;
   background: transparent;
-  color: #dcdcdc;
+  color: #00a384;
 }
 
 header .skill-container .ring .skill1 {
@@ -266,12 +268,12 @@ header .header-content h1 .stylish-font {
   font-size: 3rem;
   display: inline;
   font-weight: 100;
+  color: #00a384;
 }
 
 header .header-content .paragraph {
   margin-bottom: 1em;
   width: 90%;
-  color: #dcdcdc;
 }
 
 header .header-content .icon-container {
@@ -353,26 +355,27 @@ header .header-content .btn-container {
   }
 
   header .skill-container::before {
+    border: 5px solid #00a384;
     mask: conic-gradient(
       transparent 0deg 12deg,
-      #dcdcdc 12deg 70deg,
+      #00a384 12deg 70deg,
       transparent 70deg 110deg,
-      #dcdcdc 110deg 160deg,
+      #00a384 110deg 160deg,
       transparent 160deg 200deg,
-      #dcdcdc 200deg 254deg,
+      #00a384 200deg 254deg,
       transparent 254deg 285deg,
-      #dcdcdc 285deg 346deg,
+      #00a384 285deg 346deg,
       transparent 346deg 360deg
     );
     -webkit-mask: conic-gradient(
       transparent 0deg 12deg,
-      #dcdcdc 12deg 70deg,
+      #00a384 12deg 70deg,
       transparent 70deg 110deg,
-      #dcdcdc 110deg 160deg,
+      #00a384 110deg 160deg,
       transparent 160deg 200deg,
-      #dcdcdc 200deg 254deg,
+      #00a384 200deg 254deg,
       transparent 254deg 285deg,
-      #dcdcdc 285deg 346deg,
+      #00a384 285deg 346deg,
       transparent 346deg 360deg
     );
   }
@@ -450,7 +453,7 @@ header .header-content .btn-container {
   }
 
   header .skill-container::before {
-    border: 2px solid #dcdcdc;
+    border: 3px solid #00a384;
   }
 }
 
@@ -500,7 +503,7 @@ header .header-content .btn-container {
   }
 
   header .skill-container::before {
-    border: 3px solid #dcdcdc;
+    border: 3px solid #00a384;
   }
 }
 

@@ -10,13 +10,70 @@
 
 html,
 body {
-  /* scroll-behavior: smooth; */
   font-family: "Roboto", sans-serif;
   font-size: 62.5%;
 }
 
 a {
   text-decoration: none;
+}
+
+.themed-text {
+  color: var(--text-color);
+  transition: color 2s ease;
+}
+.themed-bg {
+  background-color: var(--bg-color);
+  transition: background-color 2s ease;
+}
+
+.themed-border {
+  border: 2px solid var(--border-color);
+  transition: background-color 2s ease;
+}
+
+html[data-bs-theme="dark"] {
+  --text-color: #dcdcdc;
+  --bg-color: #060121;
+  --border-color: #dcdcdc;
+}
+
+html[data-bs-theme="light"] {
+  --text-color: #060121;
+  --bg-color: #dcdcdc;
+  --border-color: #060121;
+}
+
+html[data-bs-theme="dark"] .text-light {
+  color: #dcdcdc;
+}
+html[data-bs-theme="dark"] .text-dark {
+  color: #060121;
+}
+
+html[data-bs-theme="light"] .text-light {
+  color: #dcdcdc;
+}
+html[data-bs-theme="light"] .text-dark {
+  color: #060121;
+}
+
+.text-light {
+  color: #dcdcdc;
+}
+
+.text-dark {
+  color: #060121;
+}
+
+.bg-light {
+  background-color: #dcdcdc;
+  color: #060121;
+}
+
+.bg-dark {
+  background-color: #060121;
+  color: #dcdcdc;
 }
 
 .sm-text {
