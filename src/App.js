@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
-import Home from "./components/Home/Home";
-import AboutUs from "./components/AboutUs/AboutUs";
 import Highlights from "./components/Highlights/Highlights";
-import "./App.css";
-import AOS from "aos";
+import AboutUs from "./components/AboutUs/AboutUs";
+import Home from "./components/Home/Home";
 import "aos/dist/aos.css";
+import AOS from "aos";
+import "./App.css";
 
 function App() {
   useEffect(() => {

@@ -475,6 +475,25 @@
   }
 }
 
+@media (max-width: 570px) and (orientation: landscape) {
+  .pc-card-wrapper {
+    width: 60%;
+  }
+
+  .pc-mini-avatar {
+    width: 25px;
+    height: 25px;
+  }
+
+  .pc-user-info {
+    height: 30px;
+    bottom: 8px;
+    left: 5px;
+    right: 5px;
+    padding: 0px 5px;
+  }
+}
+
 @media (max-width: 320px) and (orientation: portrait) {
   .pc-card-wrapper {
     width: 50%;

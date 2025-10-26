@@ -13,7 +13,6 @@ function SmoothScroll() {
       const animate = (currentTime) => {
         const elapsed = currentTime - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        // easing curve (easeInOutCubic)
         const ease =
           progress < 0.5
             ? 4 * progress * progress * progress
@@ -27,7 +26,7 @@ function SmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
       link.addEventListener("click", (e) => {
         e.preventDefault();
-        smoothScroll(link.getAttribute("href"), 2000); // 2000ms = extra smooth
+        smoothScroll(link.getAttribute("href"), 2000);
       });
     });
   }, []);

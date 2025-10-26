@@ -1,9 +1,8 @@
-import React from "react";
-import Carousel from "../Carousel/Carousel";
 import GradientText from "../GradientText/GradientText";
+import Carousel from "../Carousel/Carousel";
 import "./Highlights.css";
 
-function Highlights({ isActive }) {
+function Highlights() {
   return (
     <section className="highlights themed-bg">
       <GradientText

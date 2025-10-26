@@ -40,7 +40,6 @@ const SplitText = ({
     () => {
       if (!ref.current || !text || !fontsLoaded) return;
 
-      // 👇 Pause animation if section not active
       if (!isActive) {
         gsap.globalTimeline.pause();
         return;
@@ -50,7 +49,6 @@ const SplitText = ({
 
       const el = ref.current;
 
-      // Clean previous instance if any
       if (el._rbsplitInstance) {
         try {
           el._rbsplitInstance.revert();
@@ -139,14 +137,13 @@ const SplitText = ({
         threshold,
         rootMargin,
         fontsLoaded,
-        isActive, // 👈 added here to re-run animation when active
+        isActive,
         onLetterAnimationComplete,
       ],
       scope: ref,
     }
   );
 
-  // 👇 Replace full stop with <br><br>
   const formattedText = text.replace(/\.\s+/g, ".<br><br>");
 
   const renderTag = () => {

@@ -1,4 +1,3 @@
-import React from "react";
 import "./ShinyButtonText.css";
 
 const ShinyButtonText = ({ text = "Shiny Button", speed = 3, disabled = false, className = "" }) => {

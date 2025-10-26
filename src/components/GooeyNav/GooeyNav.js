@@ -1,9 +1,10 @@
 import { useRef, useEffect, useState } from "react";
 import ThemeToggle from "../ThemeToggle/ThemeToggle";
-import logo from "../../assets/logo.png";
-import sideBarLogo from "../../assets/side_bar_logo.png";
-import "./GooeyNav.css";
+import sideBarLogo from "../../assets/logo2.png";
 import { HiMenuAlt4, HiX } from "react-icons/hi";
+import logo from "../../assets/logo.png";
+import "./GooeyNav.css";
+
 const GooeyNav = ({
   items,
   animationTime = 600,
@@ -74,7 +75,6 @@ const GooeyNav = ({
           try {
             element.removeChild(particle);
           } catch {
-            // Do nothing
           }
         }, t);
       }, 30);
@@ -151,7 +151,6 @@ const GooeyNav = ({
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
 
-  // Side Bar Scripting
   const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     const handleClickOutside = (event) => {

@@ -42,9 +42,7 @@ const ProfileCardComponent = ({
   title = "Software Engineer",
   handle = "javicodes",
   status = "Online",
-  contactText = "Contact",
   showUserInfo = true,
-  onContactClick,
 }) => {
   const wrapRef = useRef(null);
   const cardRef = useRef(null);

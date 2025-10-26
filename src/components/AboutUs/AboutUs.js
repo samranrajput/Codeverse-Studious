@@ -1,10 +1,9 @@
-import React from "react";
 import ProfileCard from "../ProfileCard/ProfileCard";
 import SplitText from "../SplitText/SplitText";
 import GradientText from "../GradientText/GradientText";
+import aboutImage from "../../assets/my_image2.png";
+import sideBarLogo from "../../assets/logo2.png";
 import "./AboutUs.css";
-import aboutImage from "../../assets/about-image.png";
-import sideBarLogo from "../../assets/side_bar_logo.png";
 
 function AboutUs({ isActive }) {
   return (

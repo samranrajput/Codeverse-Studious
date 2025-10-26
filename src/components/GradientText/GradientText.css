@@ -1,7 +1,7 @@
 .animated-gradient-text {
   position: relative;
   margin: 20px auto;
-  padding: 0 30px;
+  padding: 10px 30px;
   display: flex;
   border-bottom: 2px solid aqua;
   max-width: fit-content;
@@ -13,7 +13,6 @@
   backdrop-filter: blur(10px);
   transition: box-shadow 0.5s ease-out;
   overflow: hidden;
-  /* cursor: pointer; */
 }
 
 .gradient-overlay {

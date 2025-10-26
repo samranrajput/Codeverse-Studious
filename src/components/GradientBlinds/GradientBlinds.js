@@ -10,6 +10,7 @@ const hexToRGB = (hex) => {
   const b = parseInt(c.slice(4, 6), 16) / 255;
   return [r, g, b];
 };
+
 const prepStops = (stops) => {
   const base = (stops && stops.length ? stops : ["#00a384", "#00a384"]).slice(
     0,

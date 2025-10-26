@@ -1,10 +1,9 @@
-import React from "react";
 import GooeyNav from "../GooeyNav/GooeyNav";
 
 const items = [
   { label: "Home", href: "#home", aos: "fade-down"},
   { label: "About Us", href: "#about", aos: "fade-down", aosDelay: "400" },
-  { label: "Highlights", href: "#", aos: "fade-down", aosDelay: "800" },
+  { label: "Highlights", href: "#highlights", aos: "fade-down", aosDelay: "800" },
   { label: "Servisece", href: "#", aos: "fade-down", aosDelay: "1200" },
   { label: "Resume", href: "#", aos: "fade-down", aosDelay: "1600" },
   { label: "Projects", href: "#", aos: "fade-down", aosDelay: "2000" },

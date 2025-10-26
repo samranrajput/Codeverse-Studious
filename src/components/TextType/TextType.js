@@ -1,5 +1,3 @@
-"use client";
-
 import {
   useEffect,
   useRef,
@@ -25,7 +23,6 @@ const TextType = ({
   cursorCharacter = "_",
   cursorClassName = "",
   cursorBlinkDuration = 0.4,
-  // textColors = ["#dcdcdc"],
   variableSpeed,
   onSentenceComplete,
   startOnVisible = false,
@@ -50,11 +47,6 @@ const TextType = ({
     const { min, max } = variableSpeed;
     return Math.random() * (max - min) + min;
   }, [variableSpeed, typingSpeed]);
-
-  // const getCurrentTextColor = () => {
-  //   if (textColors.length === 0) return "#ffffff";
-  //   return textColors[currentTextIndex % textColors.length];
-  // };
 
   useEffect(() => {
     if (!startOnVisible || !containerRef.current) return;

@@ -1,13 +1,13 @@
-import React from "react";
-import GradientBlinds from "../GradientBlinds/GradientBlinds";
-import Navbar from "../Navbar/Navbar";
-import BlurText from "../BlurText/BlurText";
-import TextType from "../TextType/TextType";
-import GlassIcons from "../GlassIcons/GlassIcons";
 import ShinyButtonText from "../ShinyButtonText/ShinyButtonText";
-import "./Home.css";
-import headerImage from "../../assets/home_image.png";
+import GradientBlinds from "../GradientBlinds/GradientBlinds";
 import myResume from "../../assets/docs/my_resume.pdf";
+import { FaMobileScreenButton } from "react-icons/fa6";
+import headerImage from "../../assets/my_image.png";
+import GlassIcons from "../GlassIcons/GlassIcons";
+import TextType from "../TextType/TextType";
+import BlurText from "../BlurText/BlurText";
+import Navbar from "../Navbar/Navbar";
+import "./Home.css";
 import {
   FaGithub,
   FaInstagram,
@@ -19,7 +19,6 @@ import {
   FaDatabase,
   FaPenNib,
 } from "react-icons/fa";
-import { FaMobileScreenButton } from "react-icons/fa6";
 
 function Home({ isActive }) {
   const items = [
@@ -66,6 +65,7 @@ function Home({ isActive }) {
       aos: "fade-left",
     },
   ];
+
   return (
     <header class="themed-bg">
       <div className="container">
@@ -140,7 +140,6 @@ function Home({ isActive }) {
           </div>
           <div className="shape"></div>
         </div>
-        {/* Skill Container */}
         <div className="skill-container">
           <div className="ring">
             <div className="skill skill1 lg-text text-center bg-light-mode text-them">
@@ -179,8 +178,6 @@ function Home({ isActive }) {
             </div>
           </div>
         </div>
-
-        {/* 🌟 Overlay Content */}
         <div className="header-content">
           <h1 className="lg-heading">
             <BlurText

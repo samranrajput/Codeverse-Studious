@@ -14,7 +14,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  row-gap: 2em;
+  row-gap: 4em;
   width: 22vw;
   border-radius: 30px;
   background: #00a384;
@@ -132,8 +132,12 @@
   transition: background-color 150ms;
 }
 
-.carousel-indicator.active {
-  background-color: #fff;
+html[data-bs-theme="dark"] .carousel-indicator.active {
+  background: #dcdcdc;
+}
+
+html[data-bs-theme="light"] .carousel-indicator.active {
+  background: #060121;
 }
 
 .carousel-indicator.inactive {
@@ -151,13 +155,16 @@
     width: 400px;
     height: 50vw;
   }
-  /* .carousel-icon-container {
-    height: 90px;
-    width: 90px;
-  } */
   .carousel-icon-container {
-    height: 10vh;
-    width: 10vh;
+    height: 13vw;
+    width: 13vw;
+  }
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  .carousel-icon-container {
+    height: 5vw;
+    width: 5vw;
   }
 }
 
@@ -166,26 +173,26 @@
     width: 250px;
     height: 60vw;
   }
-  /* .carousel-icon-container {
-    height: 60px;
-    width: 60px;
-  } */
+  .carousel-icon-container {
+    height: 18vw;
+    width: 18vw;
+  }
 }
 
 @media (max-width: 570px) and (orientation: landscape) {
   .desktop-list-item {
     width: 110px;
   }
-
-  /* .carousel-icon-container {
-    height: 40px;
-    width: 40px;
-  } */
 }
 
 @media (max-width: 320px) and (orientation: portrait) {
   .carousel-item {
     width: 200px;
     height: 55vw;
+  }
+
+  .carousel-icon-container {
+    height: 15vw;
+    width: 15vw;
   }
 }
