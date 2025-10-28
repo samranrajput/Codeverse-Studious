@@ -12,7 +12,7 @@ function AboutUs({ isActive }) {
         <GradientText
           colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
           animationSpeed={3}
-          showBorder={false}
+          showBorder={true}
           className="custom-class"
           children="About Us"
         ></GradientText>

@@ -1,9 +1,8 @@
 .animated-gradient-text {
   position: relative;
   margin: 20px auto;
-  padding: 10px 30px;
+  padding: 10px 25px;
   display: flex;
-  border-bottom: 2px solid aqua;
   max-width: fit-content;
   flex-direction: row;
   align-items: center;

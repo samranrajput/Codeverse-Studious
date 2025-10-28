@@ -1,36 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { FaProjectDiagram, FaHeart, FaLaptopCode } from "react-icons/fa";
-import { IoIosEye } from "react-icons/io";
-import CountUp from "../CountUp/CountUp";
 import "./Carousel.css";
-
-const DEFAULT_ITEMS = [
-  {
-    title: "Views",
-    counter: 100,
-    id: 1,
-    icon: <IoIosEye className="carousel-icon themed-text" />,
-  },
-  {
-    title: "Projects",
-    counter: 200,
-    id: 2,
-    icon: <FaProjectDiagram className="carousel-icon themed-text" />,
-  },
-  {
-    title: "Likes",
-    counter: 100,
-    id: 3,
-    icon: <FaHeart className="carousel-icon themed-text" />,
-  },
-  {
-    title: "Skills",
-    counter: 100,
-    id: 4,
-    icon: <FaLaptopCode className="carousel-icon themed-text" />,
-  },
-];
 
 const DRAG_BUFFER = 0;
 const VELOCITY_THRESHOLD = 500;
@@ -55,41 +25,30 @@ const useMediaQuery = (query) => {
   return matches;
 };
 
-function DesktopList({ items = DEFAULT_ITEMS, round = false }) {
+function DesktopList({ items, round = false, renderItem }) {
+  const ItemComponent = renderItem;
+
   return (
-    <div className="desktop-list-container">
+    <div className="desktop-highlights-container">
       {items.map((item, index) => (
-        <div
+        <ItemComponent
           key={item.id || index}
-          className={`desktop-list-item themed-border ${round ? "round" : ""}`}
-          // style={{
-          //   ...(round ? { /* custom round desktop styles */ } : {}),
-          // }}
-        >
-          <span className="carousel-icon-container themed-bg">{item.icon}</span>
-          <CountUp
-            from={0}
-            to={item.counter}
-            separator=","
-            direction="up"
-            duration={1}
-            className="count-up lg-heading themed-text"
-          />
-          <div className="carousel-item-title themed-text normal-heading">
-            {item.title}
-          </div>
-        </div>
+          item={item}
+          isMobile={false}
+          round={round}
+        />
       ))}
     </div>
   );
 }
 
 function MobileCarousel({
-  items = DEFAULT_ITEMS,
+  items,
   autoplay = false,
   autoplayDelay = 3000,
   pauseOnHover = false,
   round = false,
+  renderItem,
 }) {
   const [measuredItemWidth, setMeasuredItemWidth] = useState(0);
   const itemRef = useRef(null);
@@ -101,6 +60,8 @@ function MobileCarousel({
   const [isHovered, setIsHovered] = useState(false);
   const effectiveTransition = SPRING_OPTIONS;
   const containerRef = useRef(null);
+
+  const ItemComponent = renderItem;
 
   useEffect(() => {
     if (pauseOnHover && containerRef.current) {
@@ -214,29 +175,17 @@ function MobileCarousel({
             <motion.div
               key={index}
               ref={index === 0 ? itemRef : null}
-              className={`carousel-item themed-border ${round ? "round" : ""}`}
               style={{
                 rotateY: isMeasured ? rotateY : 0,
                 ...(round && { borderRadius: "50%" }),
               }}
               transition={effectiveTransition}
             >
-              <div className={`carousel-item-header ${round ? "round" : ""}`}>
-                <span className="carousel-icon-container themed-bg">
-                  {item.icon}
-                </span>
-              </div>
-              <CountUp
-                from={0}
-                to={item.counter}
-                separator=","
-                direction="up"
-                duration={1}
-                className="count-up lg-heading themed-text"
+              <ItemComponent
+                item={item}
+                isMobile={true}
+                round={round}
               />
-              <div className="carousel-item-title normal-heading themed-text">
-                {item.title}
-              </div>
             </motion.div>
           );
         })}
@@ -271,5 +220,5 @@ export default function Carousel(props) {
     return <MobileCarousel {...props} />;
   }
 
-  return <DesktopList items={props.items} round={props.round} />;
+  return <DesktopList {...props} />;
 }
