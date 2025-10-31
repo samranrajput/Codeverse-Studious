@@ -59,7 +59,7 @@ function Services() {
         animationSpeed={3}
         showBorder={true}
         className="custom-class"
-        children="Services"
+        children="My Services"
       ></GradientText>
       <Carousel
         autoplay={true}
