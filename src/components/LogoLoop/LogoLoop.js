@@ -177,11 +177,7 @@ export const LogoLoop = memo(
       }
     }, []);
 
-    useResizeObserver(
-      updateDimensions,
-      [containerRef, seqRef],
-      [logos, gap]
-    );
+    useResizeObserver(updateDimensions, [containerRef, seqRef], [logos, gap]);
 
     useImageLoader(seqRef, updateDimensions, [logos, gap]);
 
@@ -195,7 +191,7 @@ export const LogoLoop = memo(
 
     const cssVariables = useMemo(
       () => ({
-        "--logoloop-gap": `${gap}px`,
+        "--logoloop-gap": `${gap}em`,
         ...(fadeOutColor && { "--logoloop-fadeColor": fadeOutColor }),
       }),
       [gap, fadeOutColor]
@@ -266,7 +262,7 @@ export const LogoLoop = memo(
       );
 
       return (
-        <li className="logoloop__item" key={key} role="listitem">
+        <li className="logoloop__item" key={key}>
           {itemContent}
         </li>
       );
@@ -278,7 +274,6 @@ export const LogoLoop = memo(
           <ul
             className="logoloop__list"
             key={`copy-${copyIndex}`}
-            role="list"
             aria-hidden={copyIndex > 0}
             ref={copyIndex === 0 ? seqRef : undefined}
           >

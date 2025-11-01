@@ -1,9 +1,10 @@
 import PythonIcon from "../../assets/py_color.png";
+import "./PythonIcon.css";
 
 export default function PythonIconMask() {
   return (
-    <div style={{width: "13rem", height: "13rem"}}>
-      <img src={PythonIcon}></img>
+    <div className="py-icon">
+      <img src={PythonIcon} alt="Python logo" />
     </div>
   );
 }

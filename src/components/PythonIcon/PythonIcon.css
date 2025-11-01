@@ -1,0 +1,11 @@
+.py-icon {
+  width: 13rem;
+  height: 13rem;
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  .py-icon {
+    width: 7rem;
+    height: 7rem;
+  }
+}

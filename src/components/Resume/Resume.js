@@ -1,14 +1,25 @@
 import GradientText from "../GradientText/GradientText";
 import LogoLoop from "../LogoLoop/LogoLoop";
 import PythonIcon from "../PythonIcon/PythonIcon";
-import { SiReact } from "react-icons/si";
+import { SiReact, SiPhp } from "react-icons/si";
+import "./Resume.css";
 import {
   RiTailwindCssFill,
   RiJavascriptFill,
   RiNodejsLine,
 } from "react-icons/ri";
-import { FaHtml5, FaCss3Alt, FaBootstrap, FaPython } from "react-icons/fa";
-import "./Resume.css";
+import {
+  FaHtml5,
+  FaCss3Alt,
+  FaBootstrap,
+  FaDatabase,
+  FaWordpress,
+  FaLaravel,
+  FaGitAlt,
+  FaGithub,
+} from "react-icons/fa";
+import { BiLogoDjango } from "react-icons/bi";
+import { FaDartLang, FaFlutter } from "react-icons/fa6";
 
 function Resume() {
   const techLogos = [
@@ -48,27 +59,88 @@ function Resume() {
       href: "https://tailwindcss.com",
     },
     {
-      node: <PythonIcon/>,
+      node: <PythonIcon />,
       title: "Python",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: (
+        <BiLogoDjango
+          style={{
+            borderRadius: "15px",
+            background: "#092E20",
+            color: "#fff",
+          }}
+        />
+      ),
+      title: "Django",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaDatabase style={{ color: "#00618A" }} />,
+      title: "Database",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <SiPhp style={{ color: "#777BB4" }} />,
+      title: "PHP",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaWordpress style={{ color: "#21759B" }} />,
+      title: "Wordpress",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaLaravel style={{ color: "#FF2D20" }} />,
+      title: "Laravel",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaDartLang style={{ color: "#0175C2" }} />,
+      title: "Dart",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaFlutter style={{ color: "#02569B" }} />,
+      title: "Flutter",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaGitAlt style={{ color: "#F05032" }} />,
+      title: "Git",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: <FaGithub className="themed-text" />,
+      title: "Github",
+      href: "https://tailwindcss.com",
+    },
+    {
+      node: (
+        <p className="themed-text ai">
+          AI
+        </p>
+      ),
+      title: "AI",
       href: "https://tailwindcss.com",
     },
   ];
 
   return (
     <section className="Resume themed-bg">
-      <h1 className="lg-text py">Samran</h1>
       <GradientText
         colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
         animationSpeed={3}
         showBorder={true}
         className="custom-class"
-        children="My Resume"
+        children="My Skills"
       ></GradientText>
       <LogoLoop
         logos={techLogos}
         speed={150}
         direction="left"
-        gap={40}
+        gap={0.5}
         pauseOnHover
         scaleOnHover
         fadeOut

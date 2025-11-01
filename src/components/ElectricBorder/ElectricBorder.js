@@ -10,6 +10,7 @@ const ElectricBorder = ({
   thickness = 2,
   className,
   style,
+  isActive = false,
 }) => {
   const rawId = useId().replace(/[:]/g, "");
   const filterId = `turbulent-displace-${rawId}`;
@@ -95,10 +96,12 @@ const ElectricBorder = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  /* eslint-disable no-useless-computed-key */
   const vars = {
     ["--electric-border-color"]: color,
     ["--eb-border-width"]: `${thickness}px`,
   };
+  /* eslint-enable no-useless-computed-key */
 
   return (
     <div

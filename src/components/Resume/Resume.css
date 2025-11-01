@@ -3,5 +3,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+}
+
+.ai {
+  font-size: 12rem;
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  .ai {
+    font-size: 6rem;
+  }
 }
