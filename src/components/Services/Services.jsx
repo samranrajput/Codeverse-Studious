@@ -5,7 +5,6 @@ import { FaLaptopCode, FaDatabase, FaPalette } from "react-icons/fa";
 import { BsBarChartFill } from "react-icons/bs";
 import { FcSmartphoneTablet } from "react-icons/fc";
 import { VscRobot } from "react-icons/vsc";
-import "./Services.css";
 
 function Services() {
   const SERVICES_ITEM = [
