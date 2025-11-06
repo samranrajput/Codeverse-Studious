@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useEffect, useRef, useState, useMemo } from "react";
 
+// buildKeyframes function mein koi change nahi
 const buildKeyframes = (from, steps) => {
   const keys = new Set([
     ...Object.keys(from),
@@ -32,6 +33,7 @@ const BlurText = ({
   const [inView, setInView] = useState(false);
   const ref = useRef(null);
 
+  // IntersectionObserver: Koi change nahi
   useEffect(() => {
     if (!ref.current) return;
     const observer = new IntersectionObserver(
@@ -47,6 +49,7 @@ const BlurText = ({
     return () => observer.disconnect();
   }, [threshold, rootMargin]);
 
+  // Default 'from' state
   const defaultFrom = useMemo(
     () =>
       direction === "top"
@@ -55,6 +58,7 @@ const BlurText = ({
     [direction]
   );
 
+  // Default 'to' state steps
   const defaultTo = useMemo(
     () => [
       {
@@ -70,6 +74,14 @@ const BlurText = ({
   const fromSnapshot = animationFrom ?? defaultFrom;
   const toSnapshots = animationTo ?? defaultTo;
 
+  // 🔥 FIX 1: Keyframes ko useMemo mein pre-calculate karein.
+  // Ab yeh calculation sirf ek baar run hogi (jab props badlenge), na ki har word/char ke liye.
+  const animateKeyframes = useMemo(
+    () => buildKeyframes(fromSnapshot, toSnapshots),
+    [fromSnapshot, toSnapshots]
+  );
+  // ----------------------------------------------------------------------
+
   const stepCount = toSnapshots.length + 1;
   const totalDuration = stepDuration * (stepCount - 1);
   const times = Array.from({ length: stepCount }, (_, i) =>
@@ -77,16 +89,14 @@ const BlurText = ({
   );
 
   return (
-    <p
-      ref={ref}
-      className={className}
-    >
+    <p ref={ref} className={className}>
       {elements.map((segment, index) => {
-        const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
+        // 🔥 Removed: Redundant const animateKeyframes = buildKeyframes(fromSnapshot, toSnapshots);
 
         const spanTransition = {
           duration: totalDuration,
           times,
+          // Staggered delay is necessary
           delay: (index * delay) / 1000,
         };
         spanTransition.ease = easing;
@@ -96,9 +106,11 @@ const BlurText = ({
             className="text-blur-span inline-block will-change-[transform,filter,opacity]"
             key={index}
             initial={fromSnapshot}
+            // 🔥 Pre-calculated keyframes ka istemal karein
             animate={inView ? animateKeyframes : fromSnapshot}
             transition={spanTransition}
             onAnimationComplete={
+              // onAnimationComplete sirf aakhri element par call hoga
               index === elements.length - 1 ? onAnimationComplete : undefined
             }
           >

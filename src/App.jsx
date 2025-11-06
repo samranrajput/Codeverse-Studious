@@ -3,7 +3,8 @@ import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
 import Highlights from "./components/Highlights/Highlights";
 import Services from "./components/Services/Services";
 import AboutUs from "./components/AboutUs/AboutUs";
-import Resume from "./components/Resume/Resume";
+import Skills from "./components/Skills/Skills";
+import Projects from "./components/Projects/Projects";
 import Home from "./components/Home/Home";
 import "aos/dist/aos.css";
 import AOS from "aos";
@@ -22,7 +23,8 @@ function App() {
   const aboutRef = useRef(null);
   const highlightsRef = useRef(null);
   const servicesRef = useRef(null);
-  const resumeRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
 
   useEffect(() => {
     const options = {
@@ -41,7 +43,8 @@ function App() {
     if (aboutRef.current) observer.observe(aboutRef.current);
     if (highlightsRef.current) observer.observe(highlightsRef.current);
     if (servicesRef.current) observer.observe(servicesRef.current);
-    if (resumeRef.current) observer.observe(resumeRef.current);
+    if (skillsRef.current) observer.observe(skillsRef.current);
+    if (projectsRef.current) observer.observe(projectsRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -49,25 +52,33 @@ function App() {
   return (
     <>
       <SmoothScroll />
-      <div id="home" ref={homeRef}>
+      <header class="themed-bg" id="home" ref={homeRef}>
         <Home isActive={activeSection === "home"} />
-      </div>
+      </header>
 
-      <div id="about" ref={aboutRef}>
+      <section className="about themed-bg" id="about" ref={aboutRef}>
         <AboutUs isActive={activeSection === "about"} />
-      </div>
+      </section>
 
-      <div id="highlights" ref={highlightsRef}>
+      <section
+        className="highlights themed-bg"
+        id="highlights"
+        ref={highlightsRef}
+      >
         <Highlights isActive={activeSection === "highlights"} />
-      </div>
+      </section>
 
-      <div id="services" ref={highlightsRef}>
+      <section className="services themed-bg" id="services" ref={highlightsRef}>
         <Services isActive={activeSection === "services"} />
-      </div>
+      </section>
 
-      <div id="resume" ref={resumeRef}>
-        <Resume isActive={activeSection === "resume"} />
-      </div>
+      <section className="skills themed-bg" id="skills" ref={skillsRef}>
+        <Skills isActive={activeSection === "skills"} />
+      </section>
+
+      <section className="projects themed-bg" id="projects" ref={projectsRef}>
+        <Projects isActive={activeSection === "projects"} />
+      </section>
     </>
   );
 }

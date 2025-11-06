@@ -25,10 +25,12 @@
   border-radius: inherit;
   z-index: 0;
   pointer-events: none;
+  /* 🔥 Optimization: Browser ko batata hai ki is property mein changes honge */
+  will-change: background-position;
 }
 
 .gradient-overlay::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0;
@@ -65,4 +67,5 @@
   -webkit-background-clip: text;
   color: transparent;
   animation: gradient linear infinite;
+  will-change: background-position;
 }

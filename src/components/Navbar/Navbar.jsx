@@ -5,7 +5,7 @@ const items = [
   { label: "About Us", href: "#about", aos: "fade-down", aosDelay: "400" },
   { label: "Highlights", href: "#highlights", aos: "fade-down", aosDelay: "800" },
   { label: "Servisece", href: "#services", aos: "fade-down", aosDelay: "1200" },
-  { label: "Skills", href: "#resume", aos: "fade-down", aosDelay: "1600" },
+  { label: "Skills", href: "#skills", aos: "fade-down", aosDelay: "1600" },
   { label: "Projects", href: "#", aos: "fade-down", aosDelay: "2000" },
   { label: "Clients Reviews", href: "#", aos: "fade-down", aosDelay: "2400" },
   { label: "Contact Us", href: "#", aos: "fade-down", aosDelay: "2800" },

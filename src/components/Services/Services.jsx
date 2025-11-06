@@ -53,7 +53,7 @@ function Services() {
     },
   ];
   return (
-    <section className="services themed-bg">
+    <>
       <GradientText
         colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
         animationSpeed={3}
@@ -63,12 +63,12 @@ function Services() {
       ></GradientText>
       <Carousel
         autoplay={true}
-        autoplayDelay={3000}
+        autoplayDelay={4000}
         pauseOnHover={true}
         renderItem={ServicesItem}
         items={SERVICES_ITEM}
       />
-    </section>
+    </>
   );
 }
 

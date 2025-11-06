@@ -1,0 +1,103 @@
+.desktop-projects-item {
+  position: relative;
+  width: 29vw;
+  height: 20vw;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.no-select {
+  -webkit-user-drag: none;
+}
+
+.ovelay {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2em;
+  padding: 2em;
+  left: 0;
+  top: 0;
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+  transform: translateY(100%);
+  background: linear-gradient(
+    to top,
+    rgba(0, 163, 132, 1) 0%,
+    rgba(0, 163, 132, 0.8) 20%,
+    rgba(6, 1, 33, 0.6) 100%
+  );
+  color: #dcdcdc;
+  transition: all 1s;
+}
+
+.desktop-projects-item:hover .ovelay {
+  transform: translateY(0%);
+}
+
+.mobile-projects-item {
+  position: relative;
+  width: 60vw;
+  height: 45vw;
+  border-radius: 30px;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.mobile-projects-item:active {
+  cursor: grabbing;
+}
+
+.mobile-projects-item:hover .ovelay {
+  transform: translateY(0%);
+}
+
+.projects-item-title {
+  text-align: center;
+}
+
+.projects-item-description {
+  text-align: center;
+}
+
+.projects-item-icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 4em;
+  width: 100%;
+}
+
+.projects-item-icon-container .new-tab-icon,
+.projects-item-icon-container .github-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4vw;
+  height: 4vw;
+  background: #dcdcdc;
+  color: #060121;
+  border-radius: 30px;
+  cursor: pointer;
+}
+.projects-item-icon-container .new-tab-icon {
+  font-size: 3.5rem;
+}
+.projects-item-icon-container .github-icon {
+  font-size: 4.5rem;
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  .desktop-projects-item {
+    width: 28vw;
+    height: 18vw;
+    border-radius: 20px;
+  }
+
+  .desktop-projects-item .ovelay {
+    border-radius: 20px;
+  }
+}

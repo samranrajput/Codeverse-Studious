@@ -7,6 +7,13 @@
   row-gap: 4em;
   width: 29vw;
   height: 32vw;
+  border: 15px ridge #00a384;
+  background: linear-gradient(
+    to left top,
+    rgba(0, 163, 132, 0.6),
+    rgba(6, 1, 33, 0),
+    rgba(0, 163, 132, 0.6)
+  );
   padding: 4em;
 }
 
@@ -19,6 +26,14 @@
   row-gap: 3em;
   align-items: center;
   justify-content: center;
+  border-radius: 20px;
+  border: 15px ridge #00a384;
+  background: linear-gradient(
+    to left top,
+    rgba(0, 163, 132, 0.6),
+    rgba(6, 1, 33, 0),
+    rgba(0, 163, 132, 0.6)
+  );
   height: 50vh;
   cursor: grab;
   padding: 6em;
@@ -80,6 +95,7 @@
   .desktop-services-item {
     width: 27vw;
     height: 30vw;
+    border: 8px ridge #00a384;
   }
 }
 
@@ -88,5 +104,6 @@
     width: 200px;
     height: 70vw;
     padding: 10em;
+    border: 8px ridge #00a384;
   }
 }

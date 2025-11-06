@@ -7,18 +7,17 @@ export default function HighlightslItem({
   round,
   style,
   itemRef,
-  className
+  className,
 }) {
   return (
     <div
       ref={itemRef}
-      className={`${className} ${isMobile ? 'mobile-highlights-item' : 'desktop-highlights-item'} themed-border ${round ? 'round' : ''}`}
+      className={`${className} ${
+        isMobile ? "mobile-highlights-item" : "desktop-highlights-item"
+      } themed-border ${round ? "round" : ""}`}
       style={style}
     >
-      <span className="highlights-icon-container themed-bg">
-        {item.icon}
-      </span>
-
+      <i className="highlights-icon-container themed-bg">{item.icon}</i>
       <CountUp
         from={0}
         to={item.counter}
@@ -27,9 +26,9 @@ export default function HighlightslItem({
         duration={1}
         className="count-up lg-heading themed-text"
       />
-      <div className="highlights-item-title normal-heading themed-text">
+      <p className="highlights-item-title normal-heading themed-text">
         {item.title}
-      </div>
+      </p>
     </div>
   );
 }

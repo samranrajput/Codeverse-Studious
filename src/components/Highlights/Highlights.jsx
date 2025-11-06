@@ -3,7 +3,6 @@ import Carousel from "../Carousel/Carousel";
 import HighlightsItem from "../HighlightsItem/HighlightsItem";
 import { FaProjectDiagram, FaHeart, FaLaptopCode } from "react-icons/fa";
 import { IoIosEye } from "react-icons/io";
-import "./Highlights.css";
 
 function Highlights() {
   const HIGHLIGHTS_ITEM = [
@@ -33,7 +32,7 @@ function Highlights() {
     },
   ];
   return (
-    <section className="highlights themed-bg">
+    <>
       <GradientText
         colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
         animationSpeed={3}
@@ -43,12 +42,12 @@ function Highlights() {
       ></GradientText>
       <Carousel
         autoplay={true}
-        autoplayDelay={3000}
+        autoplayDelay={4000}
         pauseOnHover={true}
         renderItem={HighlightsItem}
         items={HIGHLIGHTS_ITEM}
       />
-    </section>
+    </>
   );
 }
 

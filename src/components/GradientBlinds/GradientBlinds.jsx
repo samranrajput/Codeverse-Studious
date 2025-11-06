@@ -6,7 +6,7 @@ const MAX_COLORS = 8;
 const hexToRGB = (hex) => {
   const c = hex.replace("#", "").padEnd(6, "0");
   const r = parseInt(c.slice(0, 2), 16) / 255;
-  const g = parseInt(c.slice(2, 4), 16) / 255;
+  const g = parseInt(c.slice(4, 6), 16) / 255;
   const b = parseInt(c.slice(4, 6), 16) / 255;
   return [r, g, b];
 };
@@ -24,55 +24,7 @@ const prepStops = (stops) => {
   return { arr, count };
 };
 
-const GradientBlinds = ({
-  className,
-  dpr,
-  paused = false,
-  gradientColors,
-  angle = 0,
-  noise = 0.3,
-  blindCount = 16,
-  blindMinWidth = 60,
-  mouseDampening = 0.15,
-  mirrorGradient = false,
-  spotlightRadius = 0.5,
-  spotlightSoftness = 1,
-  spotlightOpacity = 1,
-  distortAmount = 0,
-  shineDirection = "left",
-  mixBlendMode = "lighten",
-}) => {
-  const containerRef = useRef(null);
-  const rafRef = useRef(null);
-  const programRef = useRef(null);
-  const meshRef = useRef(null);
-  const geometryRef = useRef(null);
-  const rendererRef = useRef(null);
-  const mouseTargetRef = useRef([0, 0]);
-  const lastTimeRef = useRef(0);
-  const firstResizeRef = useRef(true);
-
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-
-    const renderer = new Renderer({
-      dpr:
-        dpr ??
-        (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
-      alpha: true,
-      antialias: true,
-    });
-    rendererRef.current = renderer;
-    const gl = renderer.gl;
-    const canvas = gl.canvas;
-
-    canvas.style.width = "100%";
-    canvas.style.height = "100%";
-    canvas.style.display = "block";
-    container.appendChild(canvas);
-
-    const vertex = `
+const vertex = `
 attribute vec2 position;
 attribute vec2 uv;
 varying vec2 vUv;
@@ -83,7 +35,7 @@ void main() {
 }
 `;
 
-    const fragment = `
+const fragment = `
 #ifdef GL_ES
 precision mediump float;
 #endif
@@ -126,7 +78,7 @@ vec2 rotate2D(vec2 p, float a){
 vec3 getGradientColor(float t){
   float tt = clamp(t, 0.0, 1.0);
   int count = uColorCount;
-  if (count < 2) count = 2;
+ if (count < 2) count = 2;
   float scaled = tt * float(count - 1);
   float seg = floor(scaled);
   float f = fract(scaled);
@@ -195,38 +147,98 @@ void main() {
 }
 `;
 
-    const { arr: colorArr, count: colorCount } = prepStops(gradientColors);
+const GradientBlinds = ({
+  className,
+  dpr,
+  paused = false,
+  gradientColors,
+  angle = 0,
+  noise = 0.3,
+  blindCount = 16,
+  blindMinWidth = 60,
+  mouseDampening = 0.15,
+  mirrorGradient = false,
+  spotlightRadius = 0.5,
+  spotlightSoftness = 1,
+  spotlightOpacity = 1,
+  distortAmount = 0,
+  shineDirection = "left",
+  mixBlendMode = "lighten",
+}) => {
+  const containerRef = useRef(null);
+  const rafRef = useRef(null);
+  const programRef = useRef(null);
+  const meshRef = useRef(null);
+  const geometryRef = useRef(null);
+  const rendererRef = useRef(null);
+  const mouseTargetRef = useRef([0, 0]);
+  const lastTimeRef = useRef(0);
+  const firstResizeRef = useRef(true);
+
+  // 🔥 FIX: Initial props ko useRef mein store karein taake React warning na de
+  const initialPropsRef = useRef({
+    gradientColors,
+    angle,
+    noise,
+    mirrorGradient,
+    spotlightRadius,
+    spotlightSoftness,
+    spotlightOpacity,
+    distortAmount,
+    shineDirection,
+  });
+
+  // --- 1. SETUP EFFECT (Initialisation aur Cleanup) ---
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    // Initial props ko ref se lein
+    const initialProps = initialPropsRef.current;
+
+    const renderer = new Renderer({
+      dpr:
+        dpr ??
+        (typeof window !== "undefined" ? window.devicePixelRatio || 1 : 1),
+      alpha: true,
+      antialias: true,
+    });
+    rendererRef.current = renderer;
+    const gl = renderer.gl;
+    const canvas = gl.canvas;
+
+    canvas.style.width = "100%";
+    canvas.style.height = "100%";
+    canvas.style.display = "block";
+    container.appendChild(canvas);
+
+    // Initial Uniforms: Ab ref se values use ho rahi hain
+    const { arr: colorArr, count: colorCount } = prepStops(
+      initialProps.gradientColors
+    );
+
     const uniforms = {
       iResolution: {
         value: [gl.drawingBufferWidth, gl.drawingBufferHeight, 1],
       },
       iMouse: { value: [0, 0] },
       iTime: { value: 0 },
-      uAngle: { value: (angle * Math.PI) / 180 },
-      uNoise: { value: noise },
+      uAngle: { value: (initialProps.angle * Math.PI) / 180 },
+      uNoise: { value: initialProps.noise },
       uBlindCount: { value: Math.max(1, blindCount) },
-      uSpotlightRadius: { value: spotlightRadius },
-      uSpotlightSoftness: { value: spotlightSoftness },
-      uSpotlightOpacity: { value: spotlightOpacity },
-      uMirror: { value: mirrorGradient ? 1 : 0 },
-      uDistort: { value: distortAmount },
-      uShineFlip: { value: shineDirection === "right" ? 1 : 0 },
-      uColor0: { value: colorArr[0] },
-      uColor1: { value: colorArr[1] },
-      uColor2: { value: colorArr[2] },
-      uColor3: { value: colorArr[3] },
-      uColor4: { value: colorArr[4] },
-      uColor5: { value: colorArr[5] },
-      uColor6: { value: colorArr[6] },
-      uColor7: { value: colorArr[7] },
+      uSpotlightRadius: { value: initialProps.spotlightRadius },
+      uSpotlightSoftness: { value: initialProps.spotlightSoftness },
+      uSpotlightOpacity: { value: initialProps.spotlightOpacity },
+      uMirror: { value: initialProps.mirrorGradient ? 1 : 0 },
+      uDistort: { value: initialProps.distortAmount },
+      uShineFlip: { value: initialProps.shineDirection === "right" ? 1 : 0 },
       uColorCount: { value: colorCount },
     };
+    for (let i = 0; i < MAX_COLORS; i++) {
+      uniforms[`uColor${i}`] = { value: colorArr[i] };
+    }
 
-    const program = new Program(gl, {
-      vertex,
-      fragment,
-      uniforms,
-    });
+    const program = new Program(gl, { vertex, fragment, uniforms });
     programRef.current = program;
 
     const geometry = new Triangle(gl);
@@ -234,10 +246,11 @@ void main() {
     const mesh = new Mesh(gl, { geometry, program });
     meshRef.current = mesh;
 
+    // Resize Logic
     const resize = () => {
       const rect = container.getBoundingClientRect();
       renderer.setSize(rect.width, rect.height);
-      uniforms.iResolution.value = [
+      program.uniforms.iResolution.value = [
         gl.drawingBufferWidth,
         gl.drawingBufferHeight,
         1,
@@ -252,16 +265,16 @@ void main() {
         const effective = blindCount
           ? Math.min(blindCount, maxByMinWidth)
           : maxByMinWidth;
-        uniforms.uBlindCount.value = Math.max(1, effective);
+        program.uniforms.uBlindCount.value = Math.max(1, effective);
       } else {
-        uniforms.uBlindCount.value = Math.max(1, blindCount);
+        program.uniforms.uBlindCount.value = Math.max(1, blindCount);
       }
 
       if (firstResizeRef.current) {
         firstResizeRef.current = false;
         const cx = gl.drawingBufferWidth / 2;
         const cy = gl.drawingBufferHeight / 2;
-        uniforms.iMouse.value = [cx, cy];
+        program.uniforms.iMouse.value = [cx, cy];
         mouseTargetRef.current = [cx, cy];
       }
     };
@@ -270,6 +283,7 @@ void main() {
     const ro = new ResizeObserver(resize);
     ro.observe(container);
 
+    // Pointer Move Logic
     const onPointerMove = (e) => {
       const rect = canvas.getBoundingClientRect();
       const scale = renderer.dpr || 1;
@@ -277,14 +291,16 @@ void main() {
       const y = (rect.height - (e.clientY - rect.top)) * scale;
       mouseTargetRef.current = [x, y];
       if (mouseDampening <= 0) {
-        uniforms.iMouse.value = [x, y];
+        program.uniforms.iMouse.value = [x, y];
       }
     };
     window.addEventListener("pointermove", onPointerMove);
 
+    // Render Loop Logic
     const loop = (t) => {
       rafRef.current = requestAnimationFrame(loop);
-      uniforms.iTime.value = t * 0.001;
+      program.uniforms.iTime.value = t * 0.001;
+
       if (mouseDampening > 0) {
         if (!lastTimeRef.current) lastTimeRef.current = t;
         const dt = (t - lastTimeRef.current) / 1000;
@@ -293,13 +309,14 @@ void main() {
         let factor = 1 - Math.exp(-dt / tau);
         if (factor > 1) factor = 1;
         const target = mouseTargetRef.current;
-        const cur = uniforms.iMouse.value;
+        const cur = program.uniforms.iMouse.value;
         cur[0] += (target[0] - cur[0]) * factor;
         cur[1] += (target[1] - cur[1]) * factor;
       } else {
         lastTimeRef.current = t;
       }
-      if (!paused && programRef.current && meshRef.current) {
+
+      if (!paused && meshRef.current) {
         try {
           renderer.render({ scene: meshRef.current });
         } catch (e) {
@@ -309,6 +326,7 @@ void main() {
     };
     rafRef.current = requestAnimationFrame(loop);
 
+    // Cleanup Logic
     return () => {
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("pointermove", onPointerMove);
@@ -330,15 +348,34 @@ void main() {
       meshRef.current = null;
       rendererRef.current = null;
     };
+  }, [dpr, paused, blindMinWidth, blindCount, mouseDampening]);
+
+  // --- 2. UNIFORM UPDATE EFFECT (Props Change Hone Par) ---
+  useEffect(() => {
+    const program = programRef.current;
+    if (program && program.uniforms) {
+      // Uniforms ko sirf update kar rahe hain, WebGL context ko dobara nahi bana rahe
+      const { arr: colorArr, count: colorCount } = prepStops(gradientColors);
+
+      program.uniforms.uAngle.value = (angle * Math.PI) / 180;
+      program.uniforms.uNoise.value = noise;
+      program.uniforms.uSpotlightRadius.value = spotlightRadius;
+      program.uniforms.uSpotlightSoftness.value = spotlightSoftness;
+      program.uniforms.uSpotlightOpacity.value = spotlightOpacity;
+      program.uniforms.uMirror.value = mirrorGradient ? 1 : 0;
+      program.uniforms.uDistort.value = distortAmount;
+      program.uniforms.uShineFlip.value = shineDirection === "right" ? 1 : 0;
+      program.uniforms.uColorCount.value = colorCount;
+
+      for (let i = 0; i < MAX_COLORS; i++) {
+        program.uniforms[`uColor${i}`].value = colorArr[i];
+      }
+    }
   }, [
-    dpr,
-    paused,
+    // Is hook ki dependency list mein woh sab props hain jo run-time mein update honi chahiye
     gradientColors,
     angle,
     noise,
-    blindCount,
-    blindMinWidth,
-    mouseDampening,
     mirrorGradient,
     spotlightRadius,
     spotlightSoftness,

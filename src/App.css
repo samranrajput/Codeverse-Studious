@@ -14,7 +14,7 @@ body {
   font-size: 62.5%;
 }
 
-li{
+li {
   list-style: none;
 }
 
@@ -113,6 +113,103 @@ html[data-bs-theme="light"] .text-dark {
 img {
   width: 100%;
   height: 100%;
+}
+
+header {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  border: 15px double #00a384;
+}
+
+@media (max-width: 960px) and (orientation: landscape) {
+  header {
+    border: 8px double #00a384;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  header {
+    border: 10px double #00a384;
+  }
+}
+@media (max-width: 320px) and (orientation: portrait) {
+  header {
+    border: 5px double #00a384;
+  }
+}
+
+.about {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.highlights {
+  height: 35vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.services {
+  height: 80vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projects {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1300px) and (orientation: landscape) {
+  .services {
+    height: 85vw;
+  }
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  .services {
+    height: 120vw;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  .services {
+    height: 150vw;
+  }
+}
+
+@media (max-width: 320px) and (orientation: portrait) {
+  .services {
+    height: 120vw;
+  }
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  .highlights {
+    height: 80vw;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  .highlights {
+    height: 110vw;
+  }
 }
 
 @media (max-width: 1300px) and (orientation: landscape) {
