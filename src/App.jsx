@@ -51,6 +51,7 @@ function App() {
 
   return (
     <>
+      {/* Push Test */}
       <SmoothScroll />
       <header class="themed-bg" id="home" ref={homeRef}>
         <Home isActive={activeSection === "home"} />
