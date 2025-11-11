@@ -2,6 +2,7 @@
   position: relative;
   width: 29vw;
   height: 20vw;
+  border: 15px ridge #00a384;
   border-radius: 30px;
   overflow: hidden;
 }
@@ -20,15 +21,13 @@
   padding: 2em;
   left: 0;
   top: 0;
-  border-radius: 30px;
   width: 100%;
   height: 100%;
   transform: translateY(100%);
   background: linear-gradient(
     to top,
-    rgba(0, 163, 132, 1) 0%,
-    rgba(0, 163, 132, 0.8) 20%,
-    rgba(6, 1, 33, 0.6) 100%
+    rgba(0, 163, 132, 0.8),
+    rgba(6, 1, 33, 0.8)
   );
   color: #dcdcdc;
   transition: all 1s;
@@ -40,8 +39,9 @@
 
 .mobile-projects-item {
   position: relative;
-  width: 60vw;
-  height: 45vw;
+  width: 65vw;
+  height: 50vw;
+  border: 15px ridge #00a384;
   border-radius: 30px;
   overflow: hidden;
   cursor: grab;
@@ -76,28 +76,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 4vw;
-  height: 4vw;
+  width: 3.5vw;
+  height: 3.5vw;
   background: #dcdcdc;
   color: #060121;
   border-radius: 30px;
   cursor: pointer;
 }
 .projects-item-icon-container .new-tab-icon {
-  font-size: 3.5rem;
+  font-size: 3rem;
 }
 .projects-item-icon-container .github-icon {
-  font-size: 4.5rem;
+  font-size: 4rem;
 }
 
 @media (max-width: 960px) and (orientation: landscape) {
   .desktop-projects-item {
     width: 28vw;
     height: 18vw;
-    border-radius: 20px;
+    border: 10px ridge #00a384;
   }
 
-  .desktop-projects-item .ovelay {
-    border-radius: 20px;
+  .projects-item-icon-container .new-tab-icon {
+    font-size: 3.5rem;
+  }
+  .projects-item-icon-container .github-icon {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  .mobile-projects-item {
+    border: 10px ridge #00a384;
+  }
+
+  .projects-item-title {
+    font-size: 2.2rem !important;
+  }
+
+  .projects-item-description {
+    font-size: 1.2rem !important;
+  }
+
+  .projects-item-icon-container .new-tab-icon,
+  .projects-item-icon-container .github-icon {
+    width: 7vw;
+    height: 7vw;
+  }
+  .projects-item-icon-container .new-tab-icon {
+    font-size: 2rem;
+  }
+  .projects-item-icon-container .github-icon {
+    font-size: 2.5rem;
   }
 }

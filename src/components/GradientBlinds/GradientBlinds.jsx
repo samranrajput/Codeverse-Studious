@@ -175,7 +175,6 @@ const GradientBlinds = ({
   const lastTimeRef = useRef(0);
   const firstResizeRef = useRef(true);
 
-  // 🔥 FIX: Initial props ko useRef mein store karein taake React warning na de
   const initialPropsRef = useRef({
     gradientColors,
     angle,
@@ -188,12 +187,10 @@ const GradientBlinds = ({
     shineDirection,
   });
 
-  // --- 1. SETUP EFFECT (Initialisation aur Cleanup) ---
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    // Initial props ko ref se lein
     const initialProps = initialPropsRef.current;
 
     const renderer = new Renderer({
@@ -212,7 +209,16 @@ const GradientBlinds = ({
     canvas.style.display = "block";
     container.appendChild(canvas);
 
-    // Initial Uniforms: Ab ref se values use ho rahi hain
+    gl.canvas.addEventListener("webglcontextlost", (e) => {
+      e.preventDefault();
+      console.warn("⚠️ WebGL context lost, waiting to restore...");
+    });
+
+    gl.canvas.addEventListener("webglcontextrestored", () => {
+      console.warn("✅ WebGL context restored, reinitializing...");
+      resize();
+    });
+
     const { arr: colorArr, count: colorCount } = prepStops(
       initialProps.gradientColors
     );
@@ -246,7 +252,6 @@ const GradientBlinds = ({
     const mesh = new Mesh(gl, { geometry, program });
     meshRef.current = mesh;
 
-    // Resize Logic
     const resize = () => {
       const rect = container.getBoundingClientRect();
       renderer.setSize(rect.width, rect.height);
@@ -283,7 +288,6 @@ const GradientBlinds = ({
     const ro = new ResizeObserver(resize);
     ro.observe(container);
 
-    // Pointer Move Logic
     const onPointerMove = (e) => {
       const rect = canvas.getBoundingClientRect();
       const scale = renderer.dpr || 1;
@@ -296,7 +300,6 @@ const GradientBlinds = ({
     };
     window.addEventListener("pointermove", onPointerMove);
 
-    // Render Loop Logic
     const loop = (t) => {
       rafRef.current = requestAnimationFrame(loop);
       program.uniforms.iTime.value = t * 0.001;
@@ -326,8 +329,13 @@ const GradientBlinds = ({
     };
     rafRef.current = requestAnimationFrame(loop);
 
-    // Cleanup Logic
+    const keepAlive = setInterval(() => {
+      if (renderer && meshRef.current)
+        renderer.render({ scene: meshRef.current });
+    }, 1000);
+
     return () => {
+      clearInterval(keepAlive);
       if (rafRef.current) cancelAnimationFrame(rafRef.current);
       window.removeEventListener("pointermove", onPointerMove);
       ro.disconnect();
@@ -350,11 +358,9 @@ const GradientBlinds = ({
     };
   }, [dpr, paused, blindMinWidth, blindCount, mouseDampening]);
 
-  // --- 2. UNIFORM UPDATE EFFECT (Props Change Hone Par) ---
   useEffect(() => {
     const program = programRef.current;
     if (program && program.uniforms) {
-      // Uniforms ko sirf update kar rahe hain, WebGL context ko dobara nahi bana rahe
       const { arr: colorArr, count: colorCount } = prepStops(gradientColors);
 
       program.uniforms.uAngle.value = (angle * Math.PI) / 180;
@@ -372,7 +378,6 @@ const GradientBlinds = ({
       }
     }
   }, [
-    // Is hook ki dependency list mein woh sab props hain jo run-time mein update honi chahiye
     gradientColors,
     angle,
     noise,

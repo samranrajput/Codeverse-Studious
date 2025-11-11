@@ -7,6 +7,7 @@
   row-gap: 4em;
   width: 29vw;
   height: 32vw;
+  border-radius: 30px;
   border: 15px ridge #00a384;
   background: linear-gradient(
     to left top,
@@ -26,7 +27,7 @@
   row-gap: 3em;
   align-items: center;
   justify-content: center;
-  border-radius: 20px;
+  border-radius: 30px;
   border: 15px ridge #00a384;
   background: linear-gradient(
     to left top,
@@ -80,6 +81,7 @@
   .desktop-services-item {
     width: 28vw;
     height: 28vw;
+    border: 10px ridge #00a384;
   }
 }
 
@@ -88,6 +90,7 @@
     width: 250px;
     height: 100vw;
     padding: 3em;
+    border: 10px ridge #00a384;
   }
 }
 

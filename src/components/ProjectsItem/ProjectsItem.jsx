@@ -15,13 +15,13 @@ export default function ProjectslItem({
       ref={itemRef}
       className={`${className} ${
         isMobile ? "mobile-projects-item" : "desktop-projects-item"
-      } themed-border ${round ? "round" : ""}`}
+      } ${round ? "round" : ""}`}
       style={style}
     >
       <img src={item.image} alt="Project" className="no-select"></img>
       <div className="ovelay">
         <p className="projects-item-title normal-heading">{item.title}</p>
-        <p className="projects-item-description lg-text">{item.description}</p>
+        <p className="projects-item-description normal-text">{item.description}</p>
         <div className="projects-item-icon-container">
           <a
             href={item.projectLink}

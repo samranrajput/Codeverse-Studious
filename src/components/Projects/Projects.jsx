@@ -2,13 +2,14 @@ import ProjectsItem from "../ProjectsItem/ProjectsItem";
 import GradientText from "../GradientText/GradientText";
 import Carousel from "../Carousel/Carousel";
 import Project1 from "../../assets/project1.png";
+import Project2 from "../../assets/project2.png";
 
 function Projects() {
   const PROJECTS_ITEM = [
     {
       id: 1,
       image: Project1,
-      title: "Front-End Web Development",
+      title: "Digital Clock Analog Clock",
       description:
         "I build visually stunning and responsive websites using modern front-end technologies like HTML, CSS, JavaScript, React, and Tailwind CSS.",
       projectLink: "https://digital-clock-and-analog-clock.vercel.app/",
@@ -17,10 +18,12 @@ function Projects() {
     },
     {
       id: 2,
-      image: Project1,
-      title: "Back-End Web Development",
+      image: Project2,
+      title: "Character Scroll",
       description:
         "I build visually stunning and responsive websites using modern front-end technologies like HTML, CSS, JavaScript, React, and Tailwind CSS.",
+      projectLink: "https://character-scroll-gamma.vercel.app/",
+      githubLink: "https://github.com/samranrajput/Character-Scroll",
     },
     {
       id: 3,

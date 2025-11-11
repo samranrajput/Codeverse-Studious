@@ -13,21 +13,21 @@ function Services() {
       icon: <FaLaptopCode />,
       title: "Front-End Web Development",
       description:
-        "I build visually stunning and responsive websites using modern front-end technologies like HTML, CSS, JavaScript, React, and Tailwind CSS. My focus is on creating fast, accessible, and user-friendly web interfaces that engage visitors and perform flawlessly on all devices.",
+        "I specialize in crafting visually captivating and fully responsive websites using modern front-end technologies such as HTML, CSS, JavaScript, React, and Tailwind CSS. My goal is to deliver fast, accessible, and intuitive user interfaces that not only engage visitors but also ensure seamless performance across all devices.",
     },
     {
       id: 2,
       icon: <FaDatabase />,
       title: "Back-End Web Development",
       description:
-        "I develop powerful and secure back-end systems with Python (Django) and PHP. From database design to API creation and authentication systems, I ensure your website is reliable, scalable, and efficient from the inside out.",
+        "I develop powerful and secure back-end systems using Python (Django) and PHP. From database design to API development and authentication systems, I focus on every detail to ensure your website is completely reliable, scalable, and efficient from the inside out. I work with databases such as SQLite, MySQL, and MongoDB to ensure optimal performance and strong data security.",
     },
     {
       id: 3,
       icon: <FcSmartphoneTablet />,
       title: "Mobile Application Development",
       description:
-        "I create cross-platform mobile applications with smooth UI, fast performance, and real-time database integration. Whether it’s Android or iOS, I deliver user-focused mobile solutions that bring your ideas to life.",
+        "I develop cross-platform mobile applications using Dart + Flutter and Java + Android SDK, featuring smooth UI, high performance, and real-time database integration. Whether it’s Android or iOS, I deliver user-focused and visually engaging mobile solutions that transform your ideas into a functional and elegant digital experience.",
     },
     {
       id: 4,
@@ -41,7 +41,7 @@ function Services() {
       icon: <FaPalette />,
       title: "UI/UX Design for Website",
       description:
-        "I design elegant and user-centered web interfaces focusing on usability, visual appeal, and smooth navigation. My goal is to create layouts that not only look amazing but also enhance user experience and engagement.",
+        "I design elegant and user-centered web interfaces with a focus on usability, visual appeal, and smooth navigation. Using WebGL, Three.js, and advanced 3D/4D shader animations, I create interactive and visually immersive layouts. My goal is to deliver designs that are not only aesthetically impressive but also elevate user experience, engagement, and digital interaction to the next level.",
     },
     {
       id: 6,

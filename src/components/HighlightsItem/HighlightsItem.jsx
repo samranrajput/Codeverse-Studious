@@ -14,10 +14,10 @@ export default function HighlightslItem({
       ref={itemRef}
       className={`${className} ${
         isMobile ? "mobile-highlights-item" : "desktop-highlights-item"
-      } themed-border ${round ? "round" : ""}`}
+      } ${round ? "round" : ""}`}
       style={style}
     >
-      <i className="highlights-icon-container themed-bg">{item.icon}</i>
+      <i className="highlights-icon-container">{item.icon}</i>
       <CountUp
         from={0}
         to={item.counter}

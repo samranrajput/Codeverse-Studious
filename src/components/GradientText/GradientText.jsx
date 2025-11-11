@@ -19,7 +19,7 @@ export default function GradientText({
         <div className="gradient-overlay" style={gradientStyle}></div>
       )}
            {" "}
-      <div className="text-content lg-heading" style={gradientStyle}>
+      <div className="text-content normal-heading" style={gradientStyle}>
                 {children}     {" "}
       </div>
          {" "}
