@@ -65,15 +65,28 @@
 
 @media (max-width: 1300px) and (orientation: landscape) {
   .desktop-services-item {
+    border: 12px ridge #00a384;
     height: 50vh;
   }
 }
 
 @media (max-width: 850px) and (orientation: portrait) {
-  .mobile-services-item {
-    width: 450px;
-    height: 80vw;
-    padding: 3em;
+  .desktop-services-item {
+    width: 335px;
+    height: 60vw;
+    padding: 1em;
+    row-gap: 2em;
+  }
+  .services-icon-container {
+    font-size: 6rem;
+  }
+
+  .services-item-title {
+    font-size: 2.4rem !important;
+  }
+
+  .services-item-description {
+    font-size: 1.2rem !important;
   }
 }
 
@@ -81,7 +94,16 @@
   .desktop-services-item {
     width: 28vw;
     height: 28vw;
-    border: 10px ridge #00a384;
+    padding: 8em;
+    border: 8px ridge #00a384;
+  }
+
+  .services-item-title {
+    font-size: 3.6rem !important;
+  }
+
+  .services-item-description {
+    font-size: 1.8rem !important;
   }
 }
 
@@ -92,12 +114,21 @@
     padding: 3em;
     border: 10px ridge #00a384;
   }
+
+  .services-item-title {
+    font-size: 3rem !important;
+  }
+
+  .services-item-description {
+    font-size: 1.5rem !important;
+  }
 }
 
-@media (max-width: 570px) and (orientation: landscape) {
+@media (max-width: 600px) and (orientation: landscape) {
   .desktop-services-item {
+    border-radius: 20px;
     width: 27vw;
-    height: 30vw;
+    height: 35vw;
     border: 8px ridge #00a384;
   }
 }

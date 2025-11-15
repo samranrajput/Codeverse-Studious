@@ -7,7 +7,6 @@ const VELOCITY_THRESHOLD = 500;
 const GAP = 16;
 const SPRING_OPTIONS = { type: "spring", stiffness: 100, damping: 50 };
 
-// useMediaQuery: Koi change nahi, yeh theek hai.
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(
     () => window.matchMedia(query).matches
@@ -62,7 +61,6 @@ function MobileCarousel({
   const effectiveTransition = SPRING_OPTIONS;
   const containerRef = useRef(null);
 
-  // 🔥 Autoplay Optimization Ref
   const savedCallback = useRef();
 
   const ItemComponent = renderItem;
@@ -83,7 +81,6 @@ function MobileCarousel({
     }
   }, [pauseOnHover]);
 
-  // 🔥 Autoplay Logic: Clear Interval ko kam karega.
   useEffect(() => {
     savedCallback.current = () => {
       setCurrentIndex((prev) => {
@@ -101,9 +98,8 @@ function MobileCarousel({
       const timer = setInterval(handler, autoplayDelay);
       return () => clearInterval(timer);
     }
-  }, [autoplay, autoplayDelay, isHovered, pauseOnHover]); // Choti dependency list
+  }, [autoplay, autoplayDelay, isHovered, pauseOnHover]);
 
-  // ResizeObserver: Koi change nahi, yeh theek hai.
   useEffect(() => {
     const currentItemRef = itemRef.current;
     const observer = new ResizeObserver((entries) => {
@@ -167,7 +163,6 @@ function MobileCarousel({
             currentIndex * trackItemOffset + measuredItemWidth / 2
           }px 50%`,
           x,
-          // 🔥 GPU Acceleration for the track
           willChange: "transform",
         }}
         onDragEnd={handleDragEnd}
@@ -191,7 +186,6 @@ function MobileCarousel({
               style={{
                 rotateY: isMeasured ? rotateY : 0,
                 ...(round && { borderRadius: "50%" }),
-                // 🔥 GPU Acceleration for individual items
                 willChange: isMeasured ? "transform" : "auto",
               }}
               transition={effectiveTransition}
@@ -222,10 +216,9 @@ function MobileCarousel({
   );
 }
 
-// ... Main Carousel component is the same
 export default function Carousel(props) {
   const showCarouselEffect = useMediaQuery(
-    "(max-width: 850px) and (orientation: portrait)"
+    "(max-width: 450px) and (orientation: portrait)"
   );
 
   if (showCarouselEffect) {

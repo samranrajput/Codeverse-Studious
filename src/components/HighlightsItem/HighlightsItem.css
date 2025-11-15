@@ -70,25 +70,42 @@
 
 @media (max-width: 1300px) and (orientation: landscape) {
   .desktop-highlights-item {
+    border: 12px ridge #00a384;
     width: 20vw;
   }
 }
 
 @media (max-width: 850px) and (orientation: portrait) {
-  .mobile-highlights-item {
-    width: 400px;
-    height: 50vw;
+  .desktop-highlights-item {
+    width: 335px;
+    height: 40vw;
+    row-gap: 2em;
   }
 
   .highlights-icon-container {
-    height: 13vw;
-    width: 13vw;
+    height: 12vw;
+    width: 12vw;
+  }
+
+  .highlights-item-title {
+    margin-bottom: 4px;
+    font-weight: 900;
+    text-align: center;
+  }
+
+  .count-up {
+    font-weight: 800;
+    background: linear-gradient(180deg, #fff, #fff);
+    background-clip: text;
+    color: #fff;
+    text-shadow: 0px 0px 0px rgba(0, 163, 133, 0.8),
+      3px 3px 0px rgba(0, 163, 133, 0.8);
   }
 }
 
 @media (max-width: 960px) and (orientation: landscape) {
   .desktop-highlights-item {
-    border: 10px ridge #00a384;
+    border: 8px ridge #00a384;
   }
 
   .highlights-icon-container {
@@ -110,9 +127,20 @@
   }
 }
 
-@media (max-width: 570px) and (orientation: landscape) {
+@media (max-width: 600px) and (orientation: landscape) {
   .desktop-highlights-item {
     width: 110px;
+    border-radius: 20px;
+  }
+
+  .highlights-icon-container {
+    height: 6vw;
+    width: 6vw;
+  }
+
+  .count-up {
+    text-shadow: 0px 0px 0px rgba(0, 163, 133, 0.8),
+      2px 2px 0px rgba(0, 163, 133, 0.8);
   }
 }
 

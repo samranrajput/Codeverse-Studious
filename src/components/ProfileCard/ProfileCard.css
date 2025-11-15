@@ -475,7 +475,7 @@
   }
 }
 
-@media (max-width: 570px) and (orientation: landscape) {
+@media (max-width: 600px) and (orientation: landscape) {
   .pc-card-wrapper {
     width: 60%;
   }

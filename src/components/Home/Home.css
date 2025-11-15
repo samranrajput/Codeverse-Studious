@@ -335,7 +335,7 @@ header .header-content .btn-container {
   }
 
   header .skill-container {
-    top: 128%;
+    top: 122%;
     left: 50%;
     width: 100vw;
     height: 100vw;
@@ -483,6 +483,17 @@ header .header-content .btn-container {
 
   header .skill-container::before {
     border: 3px solid #00a384;
+  }
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+  header .svg-animation .svg-img-container {
+    width: 60%;
+    height: 25vw;
+  }
+
+  header .skill-container {
+    left: 68%;
   }
 }
 

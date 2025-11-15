@@ -1,7 +1,7 @@
 .shiny-button-text {
   position: relative;
-  padding: 0.8em 2em;
-  border-radius: 9999px;
+  padding: 1.2em 2em;
+  border-radius: 50px;
   background: rgb(31, 31, 31);
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -46,6 +46,12 @@
   animation: none;
 }
 
+@media (max-width: 850px) and (orientation: portrait) {
+  .shiny-button-text {
+    padding: 1.3em 2.5em;
+  }
+}
+
 @media (max-width: 960px) and (orientation: landscape) {
   .shiny-button-text {
     padding: 4px 10px;
@@ -54,7 +60,7 @@
 
 @media (max-width: 450px) and (orientation: portrait) {
   .shiny-button-text {
-    padding: 0.5em 1em;
+    padding: 0.8em 1.2em;
   }
 }
 

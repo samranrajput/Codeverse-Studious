@@ -147,7 +147,6 @@ header {
 }
 
 .highlights {
-  height: 35vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -155,7 +154,6 @@ header {
 }
 
 .services {
-  height: 80vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -174,42 +172,6 @@ header {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-@media (max-width: 1300px) and (orientation: landscape) {
-  .services {
-    height: 85vw;
-  }
-}
-
-@media (max-width: 850px) and (orientation: portrait) {
-  .services {
-    height: 120vw;
-  }
-}
-
-@media (max-width: 450px) and (orientation: portrait) {
-  .services {
-    height: 150vw;
-  }
-}
-
-@media (max-width: 320px) and (orientation: portrait) {
-  .services {
-    height: 120vw;
-  }
-}
-
-@media (max-width: 850px) and (orientation: portrait) {
-  .highlights {
-    height: 80vw;
-  }
-}
-
-@media (max-width: 450px) and (orientation: portrait) {
-  .highlights {
-    height: 110vw;
-  }
 }
 
 @media (max-width: 1300px) and (orientation: landscape) {
@@ -240,7 +202,7 @@ header {
   }
 }
 
-@media (max-width: 570px) and (orientation: landscape) {
+@media (max-width: 600px) and (orientation: landscape) {
   html,
   body {
     font-size: 25%;

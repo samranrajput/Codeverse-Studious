@@ -83,18 +83,83 @@
   border-radius: 30px;
   cursor: pointer;
 }
+
 .projects-item-icon-container .new-tab-icon {
   font-size: 3rem;
 }
+
 .projects-item-icon-container .github-icon {
   font-size: 4rem;
+}
+
+@media (max-width: 1300px) and (orientation: landscape) {
+  .desktop-projects-item {
+    border: 12px ridge #00a384;
+  }
+
+  .projects-item-title {
+    font-size: 3rem !important;
+  }
+
+  .projects-item-description {
+    font-size: 1.8rem !important;
+  }
+}
+
+@media (max-width: 850px) and (orientation: portrait) {
+  .desktop-projects-item {
+    width: 335px;
+    height: 28vw;
+  }
+
+  .ovelay {
+    row-gap: 1em;
+  }
+
+  .projects-item-title {
+    font-size: 2rem !important;
+  }
+
+  .projects-item-description {
+    font-size: 1rem !important;
+  }
+
+  .projects-item-icon-container {
+    column-gap: 2em;
+  }
+
+  .projects-item-icon-container .new-tab-icon,
+  .projects-item-icon-container .github-icon {
+    width: 4.5vw;
+    height: 4.5vw;
+  }
+
+  .projects-item-icon-container .new-tab-icon {
+    font-size: 1.8rem;
+  }
+
+  .projects-item-icon-container .github-icon {
+    font-size: 2.5rem;
+  }
 }
 
 @media (max-width: 960px) and (orientation: landscape) {
   .desktop-projects-item {
     width: 28vw;
     height: 18vw;
-    border: 10px ridge #00a384;
+    border: 8px ridge #00a384;
+  }
+
+  .ovelay {
+    padding: 5em;
+  }
+
+  .projects-item-title {
+    font-size: 3.5rem !important;
+  }
+
+  .projects-item-description {
+    font-size: 2rem !important;
   }
 
   .projects-item-icon-container .new-tab-icon {
@@ -111,22 +176,38 @@
   }
 
   .projects-item-title {
-    font-size: 2.2rem !important;
+    font-size: 2.5rem !important;
   }
 
   .projects-item-description {
-    font-size: 1.2rem !important;
+    font-size: 1.5rem !important;
   }
 
   .projects-item-icon-container .new-tab-icon,
   .projects-item-icon-container .github-icon {
-    width: 7vw;
-    height: 7vw;
+    width: 8.5vw;
+    height: 8.5vw;
   }
   .projects-item-icon-container .new-tab-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
   .projects-item-icon-container .github-icon {
-    font-size: 2.5rem;
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 600px) and (orientation: landscape) {
+  .desktop-projects-item {
+    border-radius: 20px;
+    width: 27vw;
+    height: 20vw;
+  }
+
+  .projects-item-title {
+    font-size: 3rem !important;
+  }
+
+  .projects-item-description {
+    font-size: 2rem !important;
   }
 }
