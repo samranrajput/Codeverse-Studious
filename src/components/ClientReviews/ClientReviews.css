@@ -1,0 +1,213 @@
+.submit-review {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  width: 90%;
+  border: 15px ridge #00a384;
+  background: linear-gradient(
+    to left top,
+    rgba(0, 163, 132, 0.6),
+    rgba(6, 1, 33, 0),
+    rgba(0, 163, 132, 0.6)
+  );
+  border-radius: 30px;
+}
+
+.text-warning {
+  color: #ffc107; /* Golden color for filled stars */
+}
+
+.text-secondary {
+  color: #888888; /* Grey color for empty stars */
+}
+
+.form-group-upload-pic {
+  margin-bottom: 10em;
+}
+
+/* Profile photo container */
+.profile-wrapper {
+  position: relative;
+  margin-top: 30px;
+}
+
+.avatar-container {
+  position: relative;
+  width: 170px;
+  height: 170px;
+}
+
+.profile-img,
+.placeholder {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  background-color: #ddd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: #777;
+}
+
+.camera-icon {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  width: 45px;
+  height: 45px;
+  background-color: white;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.camera-icon:hover {
+  background-color: #f8f8f8;
+}
+
+.camera-svg {
+  width: 24px;
+  height: 24px;
+}
+
+.file-input {
+  display: none;
+}
+
+.profile-label {
+  text-align: center;
+  display: block;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 8em;
+  width: 90%;
+}
+
+.form-group label {
+  position: absolute;
+  top: 50%;
+  left: 2%;
+  transform: translateY(-50%);
+  transition: all 0.2s ease-in-out;
+  pointer-events: none;
+  color: #6c757d;
+}
+
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label {
+  top: -0.8rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  height: 25px;
+  padding: 0 0.5rem;
+  color: #fff;
+}
+
+.form-group input:focus {
+  border-bottom: 2px solid #fff;
+}
+
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -0.8rem;
+  left: 1rem;
+  font-size: 1.5rem;
+  height: 25px;
+  padding: 0 0.5rem;
+  color: #fff;
+}
+
+.form-group textarea:focus {
+  border: 2px solid #fff;
+  border-top: none;
+}
+
+.form-group input {
+  border-bottom: 2px solid #6c757d;
+  border-radius: 30px;
+  padding: 0.3em 0.8em;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+}
+
+.form-group textarea {
+  border: 2px solid #6c757d;
+  /* border-radius: 30px; */
+  padding: 0.3em 0.8em;
+  display: block;
+  width: 100%;
+  background: transparent;
+  border-top: none;
+  /* border-left: none; */
+  /* border-right: none; */
+  outline: none;
+}
+
+.editor-modal {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  max-width: 500px; /* Modal Max Width */
+  padding: 20px;
+  border-radius: 10px;
+  transform: translate(-50%, -50%);
+  z-index: 999;
+  text-align: center;
+  border: 15px ridge #00a384;
+  /* box-shadow: 0 10px 30px rgba(255, 255, 255, 0.5); */
+}
+
+.cropper-container {
+  position: relative;
+  width: 100%;
+  /* 🔥 Remove fixed height: height: 280px; */
+  background: #333;
+  border-radius: 10px;
+  overflow: hidden;
+
+  /* Add max constraints so it doesn't exceed modal's available space */
+  max-width: 310px; /* 350 - 2*20 padding */
+  max-height: 310px;
+}
+
+.crop-slider {
+  width: 100%;
+  margin: 15px 0;
+}
+
+.btn-save,
+.btn-cancel {
+  padding: 8px 12px;
+  margin: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.btn-save {
+  background-color: #40ffaa;
+}
+
+.btn-cancel {
+  background-color: #ff4040;
+  color: white;
+}

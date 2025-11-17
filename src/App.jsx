@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from "react";
 import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
+import Home from "./components/Home/Home";
+import AboutUs from "./components/AboutUs/AboutUs";
 import Highlights from "./components/Highlights/Highlights";
 import Services from "./components/Services/Services";
-import AboutUs from "./components/AboutUs/AboutUs";
 import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
-import Home from "./components/Home/Home";
+import ClientReviews from "./components/ClientReviews/ClientReviews";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import "./App.css";
@@ -25,6 +26,7 @@ function App() {
   const servicesRef = useRef(null);
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
+  const clientReviewsRef = useRef(null);
 
   useEffect(() => {
     const options = {
@@ -45,6 +47,7 @@ function App() {
     if (servicesRef.current) observer.observe(servicesRef.current);
     if (skillsRef.current) observer.observe(skillsRef.current);
     if (projectsRef.current) observer.observe(projectsRef.current);
+    if (clientReviewsRef.current) observer.observe(clientReviewsRef.current);
 
     return () => observer.disconnect();
   }, []);
@@ -79,6 +82,14 @@ function App() {
 
       <section className="projects themed-bg" id="projects" ref={projectsRef}>
         <Projects isActive={activeSection === "projects"} />
+      </section>
+
+      <section
+        className="client-reviews themed-bg"
+        id="clientReviews"
+        ref={clientReviewsRef}
+      >
+        <ClientReviews isActive={activeSection === "clientReviews"} />
       </section>
     </>
   );
