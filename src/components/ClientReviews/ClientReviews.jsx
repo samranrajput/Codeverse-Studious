@@ -1,34 +1,28 @@
 import React, { useState, useCallback, useRef } from "react";
 import Cropper from "react-easy-crop";
 import "./ClientReviews.css";
-// Assuming GradientText component and its imports are correct
 import GradientText from "../GradientText/GradientText";
 import ShinyButtonText from "../ShinyButtonText/ShinyButtonText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { IoMdPhotos } from "react-icons/io";
 
-// ⚠️ ZAROORI: CLOUDINARY CONFIGURATION KO APNE ACCOUNT DETAILS SE BADALEIN ⚠️
-const CLOUDINARY_CLOUD_NAME = "dgztym2e5"; // <-- APNA CLOUD NAME YAHAN DAALEIN
-const CLOUDINARY_UPLOAD_PRESET = "image-url"; // <-- APNA UNSIGNED PRESET YAHAN DAALEIN
-// -------------------------------------------------------------------------
+const CLOUDINARY_CLOUD_NAME = "dgztym2e5";
+const CLOUDINARY_UPLOAD_PRESET = "image-url";
 
 function ClientReviews() {
-  // FORM FIELDS STATES
   const [fullName, setFullName] = useState("");
   const [country, setCountry] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitMessage, setSubmitMessage] = useState(null); // { type: 'success' | 'error', text: '...' }
+  const [submitMessage, setSubmitMessage] = useState(null);
 
-  // FORM ENDPOINT
   const FORM_ENDPOINT = "https://formspree.io/f/xanvgrry";
 
-  // IMAGE/CROP STATES
   const [imageSrc, setImageSrc] = useState(null);
   const [crop, setCrop] = useState({ x: 0, y: 0 });
   const [croppedAreaPixels, setCroppedAreaPixels] = useState(null);
-  const [croppedImage, setCroppedImage] = useState(null); // Base64 data
+  const [croppedImage, setCroppedImage] = useState(null);
   const [zoom, setZoom] = useState(1);
   const [rating, setRating] = useState(5);
   const [imageDimensions, setImageDimensions] = useState({
@@ -37,8 +31,6 @@ function ClientReviews() {
   });
 
   const fileInputRef = useRef(null);
-
-  // --- CROPPER/IMAGE LOGIC (NO CHANGE) ---
 
   const onCropComplete = useCallback((_, croppedAreaPixels) => {
     setCroppedAreaPixels(croppedAreaPixels);
@@ -136,7 +128,6 @@ function ClientReviews() {
     };
   };
 
-  // --- RATING LOGIC (NO CHANGE) ---
 
   const handleRatingChange = (event) => {
     setRating(Number(event.target.value));
@@ -164,28 +155,25 @@ function ClientReviews() {
     const halfStar = rating % 1 !== 0;
     const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
 
-    let starString = "★".repeat(fullStars); // Unicode Black Star
+    let starString = "★".repeat(fullStars);
     if (halfStar) {
-      starString += "½"; // Unicode Half Star
+      starString += "½";
     }
-    starString += "☆".repeat(emptyStars); // Unicode White Star
+    starString += "☆".repeat(emptyStars);
 
     return `${starString} (${rating.toFixed(1)} / 5.0)`;
   };
-
-  // --- 🚀 FINAL SUBMISSION LOGIC (CLOUDINARY ADDED) ---
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage(null);
 
-    // Basic Validation
     if (!fullName || !country || !message || rating === 0) {
       setIsSubmitting(false);
       setSubmitMessage({
         type: "error",
-        text: "Barahe karam saare zaroori fields bharein.",
+        text: "Please fill in all the required fields.",
       });
       return;
     }
@@ -193,8 +181,6 @@ function ClientReviews() {
     const base64Data = croppedImage;
     let finalImageUrl = "N/A";
 
-    // 1. ☁️ CLOUDINARY UPLOAD LOGIC
-    // Check karte hain ki Base64 data hai aur Cloudinary ki settings bhi hain
     if (
       base64Data &&
       base64Data !== "N/A" &&
@@ -203,7 +189,6 @@ function ClientReviews() {
     ) {
       try {
         const uploadFormData = new FormData();
-        // Base64 data ko 'file' field mein daalte hain
         uploadFormData.append("file", base64Data);
         uploadFormData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
 
@@ -223,47 +208,37 @@ function ClientReviews() {
         }
 
         const cloudinaryResult = await cloudinaryResponse.json();
-        // CLEAN AND SHORT URL MIL GAYA!
         finalImageUrl = cloudinaryResult.secure_url;
       } catch (error) {
         console.error("Cloudinary Upload Error:", error);
         setSubmitMessage({
           type: "error",
-          text: `Image upload mein ghalti hui. Review sirf text mein bheja jaayega.`,
+          text: `There was an error uploading the image. The review will be submitted in text only.`,
         });
-        // Agar fail hua, toh ek message finalImageUrl mein store kar dete hain
         finalImageUrl = "Image upload failed. See console for details.";
       }
     } else if (base64Data && base64Data !== "N/A") {
-      // Agar Base64 data hai lekin Cloudinary ki settings adhoori hain
       finalImageUrl =
         "⚠️ Cloudinary setup incomplete or failed. Base64 data below (long and may be blocked):";
     }
 
-    // 2. FORMSPREE SUBMISSION LOGIC
     const formData = {
-      // Subject
       _subject: `New Client Review from ${fullName} (Rating: ${rating.toFixed(
         1
       )})`,
 
-      // The 4 required fields for email listing
       "Full Name": fullName,
       "Your Country": country,
       Rating: renderStarsHtmlForEmail(),
       Message: message,
 
-      // Image Link (Chota URL ya Error Message)
       "Profile Picture Link": finalImageUrl,
 
-      // Fallback: Agar Image upload fail ho ya settings adhoori hon, toh Base64 data bhej dete hain
       ...(finalImageUrl.includes("failed") ||
       finalImageUrl.includes("Cloudinary setup incomplete")
         ? { "Fallback Image Data (Large)": base64Data }
         : {}),
     };
-
-    // 3. FETCH AND RETRY LOGIC (NO CHANGE)
 
     try {
       let response;
@@ -292,9 +267,8 @@ function ClientReviews() {
       if (response && response.ok) {
         setSubmitMessage({
           type: "success",
-          text: "Aapka Review Safaltapoorvak Bhej Diya Gaya Hai! Shukriya.",
+          text: "Your review has been successfully submitted! Thank you.",
         });
-        // Reset form fields
         setFullName("");
         setCountry("");
         setMessage("");
@@ -304,28 +278,26 @@ function ClientReviews() {
         const result = await response.json();
         setSubmitMessage({
           type: "error",
-          text: `Bhejne mein ghalti hui. Error: ${
+          text: `There was an error sending. Error: ${
             result.error || "Unknown Error"
           }. Please check Formspree.`,
         });
       } else {
         setSubmitMessage({
           type: "error",
-          text: "Network mein koi masla hai. Please dobara koshish karein.",
+          text: "There is a network issue. Please try again.",
         });
       }
     } catch (error) {
       console.error("Submission Network Error:", error);
       setSubmitMessage({
         type: "error",
-        text: "Network mein koi masla hai. Please dobara koshish karein.",
+        text: "There is a network issue. Please try again.",
       });
     } finally {
       setIsSubmitting(false);
     }
   };
-
-  // --- 🖼️ JSX RENDER (NO CHANGE) ---
 
   return (
     <>
@@ -449,7 +421,6 @@ function ClientReviews() {
             className="themed-text lg-text"
             id="fullName"
             type="text"
-            required
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
             placeholder=" "
@@ -463,7 +434,6 @@ function ClientReviews() {
             className="themed-text lg-text"
             id="country"
             type="text"
-            required
             value={country}
             onChange={(e) => setCountry(e.target.value)}
             placeholder=" "
@@ -496,7 +466,6 @@ function ClientReviews() {
             className="themed-text lg-text"
             id="meassage"
             type="text"
-            required
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             placeholder=" "
@@ -505,7 +474,6 @@ function ClientReviews() {
             Message
           </label>
         </div>
-        {/* Submit Button (Bootstrap classes removed) */}
         <button type="submit" className="submit-btn" disabled={isSubmitting}>
           <ShinyButtonText
             text={isSubmitting ? "Sending..." : "Submit Review"}

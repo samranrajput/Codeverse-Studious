@@ -32,7 +32,6 @@
   row-gap: 3em;
 }
 
-/* Profile photo container */
 .profile-wrapper {
   position: relative;
 }
@@ -326,6 +325,28 @@ html[data-bs-theme="light"] .camera-icon {
   .cropper-container {
     max-width: 300px;
     max-height: 300px;
+  }
+
+  .form-group textarea {
+    height: 100px;
+  }
+}
+
+@media (max-width: 450px) and (orientation: portrait) {
+  .submit-review {
+    width: 90%;
+  }
+
+  .avatar-container {
+    width: 160px;
+    height: 160px;
+  }
+
+  .camera-icon {
+    bottom: 6px;
+    right: 6px;
+    width: 45px;
+    height: 45px;
   }
 
   .form-group textarea {
