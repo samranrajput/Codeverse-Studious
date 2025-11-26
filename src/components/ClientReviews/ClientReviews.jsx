@@ -6,6 +6,8 @@ import ShinyButtonText from "../ShinyButtonText/ShinyButtonText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { IoMdPhotos } from "react-icons/io";
+import { RxCrossCircled } from "react-icons/rx";
+import { FaCheckCircle } from "react-icons/fa";
 
 const CLOUDINARY_CLOUD_NAME = "dgztym2e5";
 const CLOUDINARY_UPLOAD_PRESET = "image-url";
@@ -127,7 +129,6 @@ function ClientReviews() {
       margin: "0 auto",
     };
   };
-
 
   const handleRatingChange = (event) => {
     setRating(Number(event.target.value));
@@ -308,18 +309,24 @@ function ClientReviews() {
             backgroundColor:
               submitMessage.type === "success" ? "#060121" : "#060121",
             color: submitMessage.type === "success" ? "green" : "red",
-            border: submitMessage.type === "success" ? "2px solid green" : "2px solid red",
+            border:
+              submitMessage.type === "success"
+                ? "2px solid green"
+                : "2px solid red",
           }}
         >
           <div className="message-box-center-part">
             {submitMessage.type === "success" ? (
-              <IoMdPhotos className="sm-heading" />
+              <FaCheckCircle className="sm-heading" />
             ) : (
-              <IoMdPhotos className="sm-heading" />
+              <RxCrossCircled className="sm-heading" />
             )}
             <p className="normal-text">{submitMessage.text}</p>
           </div>
-          <button onClick={() => setSubmitMessage(null)} className="message-box-close-btn normal-heading">
+          <button
+            onClick={() => setSubmitMessage(null)}
+            className="message-box-close-btn lg-heading"
+          >
             &times;
           </button>
         </div>

@@ -263,9 +263,8 @@ html[data-bs-theme="light"] .camera-icon {
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80%;
-  max-width: 500px;
   z-index: 1000;
+  column-gap: 5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
